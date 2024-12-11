@@ -47,7 +47,7 @@
     $perPage = 6;
     $start = ($page - 1) * $perPage;
     $search = $product->search($keyword, $start, $perPage);
-    $total = count($product->TotalCate($keyword));
+    $total = count($product->searchCountByType_Id1(1));
     $url = $_SERVER['PHP_SELF'] . '?keyword=' . $keyword;
     ?>
 
@@ -85,7 +85,7 @@
         <div class="container">
             <div class="row mx-0">
                 <?php
-                $searchByType_Id = $product->searchByType_Id(1);
+                $searchByType_Id = $product->searchByType_Id(3, $start, $perPage);
                 foreach ($searchByType_Id as $key => $value) : ?>
                     <div class="col-md-4">
                         <div class="product-item shadow">

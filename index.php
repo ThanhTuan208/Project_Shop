@@ -87,7 +87,7 @@
     </div>
   </div>
 
-
+  <!-- 
   <div class="services"
     style="background-image: url(https://th.bing.com/th/id/R.1ad066a598d1aae8bd4025cb722a5e3b?rik=K6hblJmzZN2jkg&pid=ImgRaw&r=0);">
     <div class="container">
@@ -120,7 +120,7 @@
         <?php endforeach ?>
       </div>
     </div>
-  </div>
+  </div> -->
 
   <div class="happy-clients">
     <div class="container">
