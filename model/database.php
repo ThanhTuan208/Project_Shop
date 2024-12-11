@@ -8,6 +8,10 @@ class Database
             self::$con = new mysqli(DB_HOST, DB_USER, DB_PASSWORD, DB_NAME, PORT);
             self::$con->set_charset(DB_CHARSET);
         }
+<<<<<<< HEAD
+=======
+
+>>>>>>> a5fc99e44fb59381b5f4e485bdde88e282d6378d
     }
 
     public static function getConnection()
@@ -17,4 +21,9 @@ class Database
         }
         return self::$con;
     }
+<<<<<<< HEAD
 }
+=======
+
+}
+>>>>>>> a5fc99e44fb59381b5f4e485bdde88e282d6378d

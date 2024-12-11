@@ -10,7 +10,12 @@
   <meta name="author" content="">
   <link rel="icon" href="assets/images/favicon.ico">
 
+<<<<<<< HEAD
   <link href="https://fonts.googleapis.com/css?family=Poppins:100,200,300,400,500,600,700,800,900&display=swap" rel="stylesheet">
+=======
+  <link href="https://fonts.googleapis.com/css?family=Poppins:100,200,300,400,500,600,700,800,900&display=swap"
+    rel="stylesheet">
+>>>>>>> a5fc99e44fb59381b5f4e485bdde88e282d6378d
 
   <title>PHPJabbers.com | Free Online Store Website Template</title>
 
@@ -52,11 +57,20 @@
   ?>
 
   <!-- Page Content -->
+<<<<<<< HEAD
   <div class="page-heading about-heading header-text" style="background-image: url(assets/images/heading-6-1920x500.jpg);">
+=======
+  <div class="page-heading about-heading header-text"
+    style="background-image: url(assets/images/heading-6-1920x500.jpg);">
+>>>>>>> a5fc99e44fb59381b5f4e485bdde88e282d6378d
     <div class="container">
       <div class="row">
         <div class="col-md-12">
           <div class="text-content">
+<<<<<<< HEAD
+=======
+            <h4>Lorem ipsum dolor sit amet</h4>
+>>>>>>> a5fc99e44fb59381b5f4e485bdde88e282d6378d
             <h2>Products</h2>
           </div>
         </div>
@@ -66,6 +80,7 @@
 
   <div class="products">
     <div class="container">
+<<<<<<< HEAD
       <div class="row mx-0 justify-content-center">
         <?php
         $getAllProtype = $protype->getAllProtype();
@@ -89,6 +104,15 @@
           <div class="col-md-4">
             <div class="product-item shadow">
               <a href="product-details.php?id=<?php echo $value['id'] ?>"><img src="anh/<?php echo $value['image']; ?>" alt=""></a>
+=======
+      <div class="row mx-0">
+        <?php
+        foreach ($search as $key => $value): ?>
+          <div class="col-md-4">
+            <div class="product-item shadow">
+              <a href="product-details.php?id=<?php echo $value['id'] ?>"><img src="anh/<?php echo $value['image']; ?>"
+                  alt=""></a>
+>>>>>>> a5fc99e44fb59381b5f4e485bdde88e282d6378d
               <div class="down-content">
                 <a href="product-details.php?id=<?php echo $value['id'] ?>">
                   <h4><?php echo $value['name']; ?></h4>
@@ -122,7 +146,12 @@
   </footer>
 
   <!-- Modal -->
+<<<<<<< HEAD
   <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+=======
+  <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+    aria-hidden="true">
+>>>>>>> a5fc99e44fb59381b5f4e485bdde88e282d6378d
     <div class="modal-dialog modal-lg" role="document">
       <div class="modal-content">
         <div class="modal-header">

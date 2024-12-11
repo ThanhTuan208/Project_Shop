@@ -87,7 +87,11 @@
     </div>
   </div>
 
+<<<<<<< HEAD
   <!-- 
+=======
+
+>>>>>>> a5fc99e44fb59381b5f4e485bdde88e282d6378d
   <div class="services"
     style="background-image: url(https://th.bing.com/th/id/R.1ad066a598d1aae8bd4025cb722a5e3b?rik=K6hblJmzZN2jkg&pid=ImgRaw&r=0);">
     <div class="container">
@@ -120,7 +124,11 @@
         <?php endforeach ?>
       </div>
     </div>
+<<<<<<< HEAD
   </div> -->
+=======
+  </div>
+>>>>>>> a5fc99e44fb59381b5f4e485bdde88e282d6378d
 
   <div class="happy-clients">
     <div class="container">

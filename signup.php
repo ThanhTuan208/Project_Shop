@@ -17,8 +17,13 @@
 
         .card {
             border: none;
+<<<<<<< HEAD
             border-radius: 20px;
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+=======
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+>>>>>>> a5fc99e44fb59381b5f4e485bdde88e282d6378d
         }
 
         .btn {
@@ -29,7 +34,11 @@
 
 <body>
     <div class="container">
+<<<<<<< HEAD
         <div class="row justify-content-center ">
+=======
+        <div class="row justify-content-center">
+>>>>>>> a5fc99e44fb59381b5f4e485bdde88e282d6378d
             <div class="col-md-6">
                 <div class="card p-4">
                     <h2 class="text-center mb-4">Sign Up</h2>

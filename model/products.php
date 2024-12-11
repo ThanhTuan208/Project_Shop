@@ -54,7 +54,10 @@ class Products extends Database
         $item = $sql->get_result()->fetch_all(MYSQLI_ASSOC);
         return $item;
     }
+<<<<<<< HEAD
 
+=======
+>>>>>>> a5fc99e44fb59381b5f4e485bdde88e282d6378d
     public function search($keyword, $start, $count)
     {
         $sql = self::$con->prepare('SELECT *
@@ -68,6 +71,7 @@ class Products extends Database
         return $item;
     }
 
+<<<<<<< HEAD
     public function searchByType_Id($type_id, $start, $count)
     {
         $sql = self::$con->prepare('SELECT * FROM products WHERE type_id LIKE ? LIMIT ?, ? ');
@@ -87,6 +91,8 @@ class Products extends Database
         return $item;
     }
 
+=======
+>>>>>>> a5fc99e44fb59381b5f4e485bdde88e282d6378d
     public function pageInt($url, $total, $perPage, $page)
     {
         $totalLinks = ceil($total / $perPage);
@@ -108,12 +114,16 @@ class Products extends Database
 
     public function getProductDetail($id)
     {
+<<<<<<< HEAD
         $sql = self::$con->prepare('SELECT products.*, manufactures.manu_name as nameManu,
         protypes.type_name as nameType 
         FROM products 
         JOIN manufactures ON manufactures.manu_id = products.manu_id 
         JOIN protypes ON protypes.type_id = products.type_id 
         WHERE id = ?');
+=======
+        $sql = self::$con->prepare('SELECT * FROM products WHERE id = ?');
+>>>>>>> a5fc99e44fb59381b5f4e485bdde88e282d6378d
         $sql->bind_param('i', $id);
         $sql->execute();
         $item = array();
@@ -121,6 +131,7 @@ class Products extends Database
         return $item;
     }
 
+<<<<<<< HEAD
     public function getProductImageById($id)
     {
         $sql = self::$con->prepare('SELECT * FROM products WHERE id = ?');
@@ -131,6 +142,8 @@ class Products extends Database
         return $item["image"];
     }
 
+=======
+>>>>>>> a5fc99e44fb59381b5f4e485bdde88e282d6378d
     public function getSimilarProduct($id, $start, $count)
     {
         $sql = self::$con->prepare('SELECT * 
@@ -155,6 +168,7 @@ class Products extends Database
         $item = $sql->get_result()->fetch_all(MYSQLI_ASSOC);
         return $item;
     }
+<<<<<<< HEAD
 
     public function getAllItemByAllTable($keyword, $start, $count)
     {
@@ -217,3 +231,6 @@ class Products extends Database
 
 }
 
+=======
+}
+>>>>>>> a5fc99e44fb59381b5f4e485bdde88e282d6378d
