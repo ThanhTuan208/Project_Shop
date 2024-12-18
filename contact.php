@@ -36,7 +36,10 @@
   <!-- ***** Preloader End ***** -->
 
   <!-- Header -->
-  <?php include 'header.php' ?>
+  <?php
+  include "required.php";
+  include 'header.php' ?>
+
 
   <!-- Page Content -->
   <div class="page-heading contact-heading header-text"

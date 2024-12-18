@@ -10,7 +10,8 @@
   <meta name="author" content="">
   <link rel="icon" href="assets/images/favicon.ico">
 
-  <link href="https://fonts.googleapis.com/css?family=Poppins:100,200,300,400,500,600,700,800,900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Poppins:100,200,300,400,500,600,700,800,900&display=swap"
+    rel="stylesheet">
 
   <title>PHPJabbers.com | Free Online Store Website Template</title>
 
@@ -52,24 +53,27 @@
   ?>
 
   <!-- Page Content -->
-  <div class="page-heading about-heading header-text" style="background-image: url(assets/images/heading-6-1920x500.jpg);">
+  <div class="page-heading about-heading header-text"
+    style="background-image: url(https://img.freepik.com/free-vector/technology-future-landing-page-template_23-2148961470.jpg?t=st=1734242919~exp=1734246519~hmac=eef702d1fb718968394833f91cc90720479e7381d10c9aca4290dcb7edc0ab14&w=996); background-size: cover; background-repeat: no-repeat; background-position: center center; height: 500px;">
     <div class="container">
       <div class="row">
         <div class="col-md-12">
           <div class="text-content">
-            <h2>Products</h2>
+            <h4>Sản phẩm</h4>
+            <h2 style="opacity: 70%;">Products</h2>
           </div>
         </div>
       </div>
     </div>
   </div>
 
+
   <div class="products">
     <div class="container">
       <div class="row mx-0 justify-content-center">
         <?php
         $getAllProtype = $protype->getAllProtype();
-        foreach ($getAllProtype as $key => $value) : ?>
+        foreach ($getAllProtype as $key => $value): ?>
           <div class="col-auto text-center">
             <a href='cate<?php echo $value['type_name'] ?>.php' class='btn btn-outline-warning mx-2 px-3 py-2 shadow'>
               <?php echo $value['type_name'] ?>
@@ -85,15 +89,18 @@
     <div class="container">
       <div class="row mx-0">
         <?php
-        foreach ($search as $key => $value) : ?>
+        foreach ($search as $key => $value): ?>
           <div class="col-md-4">
             <div class="product-item shadow">
-              <a href="product-details.php?id=<?php echo $value['id'] ?>"><img src="anh/<?php echo $value['image']; ?>" alt=""></a>
+              <a href="product-details.php?id=<?php echo $value['id'] ?>"><img src="anh/<?php echo $value['image']; ?>"
+                  alt=""
+                  style="width: 300px; height: 300px; object-fit: cover;  display: block; margin: auto; filter: contrast(110%) brightness(105%); border-radius: 10px"></a>
               <div class="down-content">
                 <a href="product-details.php?id=<?php echo $value['id'] ?>">
                   <h4><?php echo $value['name']; ?></h4>
                 </a>
-                <h6><small><del>$999.00 </del></small> $ <?php echo $value['price']; ?>.00</h6>
+                <h6><small><del></del></small> $ <?php echo $value['price']; ?>.00
+                </h6>
                 <p><?php echo substr($value['description'], 0, 100) ?></p>
               </div>
             </div>
@@ -122,7 +129,8 @@
   </footer>
 
   <!-- Modal -->
-  <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+    aria-hidden="true">
     <div class="modal-dialog modal-lg" role="document">
       <div class="modal-content">
         <div class="modal-header">

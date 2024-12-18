@@ -1,30 +1,55 @@
-<!DOCTYPE html>
-<html lang="en">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="description" content="">
+<meta name="author" content="">
+<link rel="icon" href="assets/images/favicon.ico">
 
-<head>
+<link href="https://fonts.googleapis.com/css?family=Poppins:100,200,300,400,500,600,700,800,900&display=swap"
+     rel="stylesheet">
 
-     <meta charset="utf-8">
-     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-     <meta name="description" content="">
-     <meta name="author" content="">
-     <link rel="icon" href="assets/images/favicon.ico">
+<title>PHPJabbers.com | Free Online Store Website Template</title>
 
-     <link href="https://fonts.googleapis.com/css?family=Poppins:100,200,300,400,500,600,700,800,900&display=swap"
-          rel="stylesheet">
+<!-- Bootstrap core CSS -->
+<link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
-     <title>PHPJabbers.com | Free Online Store Website Template</title>
+<!-- Additional CSS Files -->
+<link rel="stylesheet" href="assets/css/fontawesome.css">
+<link rel="stylesheet" href="assets/css/style.css">
+<link rel="stylesheet" href="AUI/cssButton.css">
+<link rel="stylesheet" href="assets/css/owl.css">
 
-     <!-- Bootstrap core CSS -->
-     <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-
-     <!-- Additional CSS Files -->
-     <link rel="stylesheet" href="assets/css/fontawesome.css">
-     <link rel="stylesheet" href="assets/css/style.css">
-     <link rel="stylesheet" href="assets/css/owl.css">
 
 </head>
 
-<body>
+<style>
+     .card {
+          border-radius: 20px;
+          box-shadow: 4px 4px 4px 4px rgba(0, 0, 0, 0.4);
+     }
+
+     .card p {
+          font-size: 18px;
+     }
+
+     .card h4 {
+          text-align: center;
+     }
+
+     h1 {
+          text-align: center;
+          font-family: 'Arial', sans-serif;
+          font-size: 42px;
+          color: #333;
+          text-shadow: 2px 2px 4px rgba(218, 200, 64, 0.6);
+          margin-bottom: 20px;
+     }
+
+     .card-header {
+          background-color: #333;
+     }
+</style>
+
+<div>
 
      <!-- ***** Preloader Start ***** -->
      <div id="preloader">
@@ -37,219 +62,135 @@
      <!-- ***** Preloader End ***** -->
 
      <!-- Header -->
-     <?php include 'header.php' ?>
+     <?php
+     include "required.php";
+     include 'header.php' ?>
 
      <!-- Page Content -->
      <div class="page-heading about-heading header-text"
-          style="background-image: url(assets/images/heading-6-1920x500.jpg);">
+          style="background-image: url(https://www.yash.com/wp-content/uploads/2021/06/obs-blog-img.png); background-size: cover">
           <div class="container">
                <div class="row">
                     <div class="col-md-12">
                          <div class="text-content">
-                              <h4>Lorem ipsum dolor sit amet</h4>
+                              <h4>thanh toán</h4>
                               <h2>Checkout</h2>
                          </div>
                     </div>
                </div>
           </div>
      </div>
-
      <div class="products call-to-action">
-          <div class="container">
-               <ul class="list-group list-group-flush">
-                    <li class="list-group-item">
-                         <div class="row">
-                              <div class="col-6">
-                                   <em>Sub-total</em>
-                              </div>
+          <form action="payment.php" method="post">
+               <div class="container">
+                    <?php $getAllCart = $cart->getAllCart();
+                    $total = 0;
+                    foreach ($getAllCart as $key => $value) {
+                         $total += $value["price"];
+                    }
+                    ?>
+                    <ul class="list-group list-group-flush">
 
-                              <div class="col-6 text-right">
-                                   <strong>$ 128.00</strong>
+                         <li class="list-group-item">
+                              <div class="row">
+                                   <div class="col-6">
+                                        <em>Sản phẩm của bạn </em>
+                                   </div>
+                                   <div class="col-6 text-right">
+                                        <?php $arr = [];
+                                        foreach ($cart->getAllCart() as $key => $value) {
+                                             $arr[] = $value["name"];
+                                        }
+                                        echo implode(", ", $arr);
+                                        ?></strong>
+                                   </div>
                               </div>
+                         </li>
+                         <li class="list-group-item">
+                              <div class="row">
+                                   <div class="col-6">
+                                        <em>Tổng tiền mặt hàng </em>
+                                   </div>
+
+                                   <div class="col-6 text-right">
+                                        <strong>
+                                             $ <?php echo $total ?>.00
+                                        </strong>
+                                   </div>
+                              </div>
+                         </li>
+
+                         <li class="list-group-item">
+                              <div class="row">
+                                   <div class="col-6">
+                                        <em>Phụ thu </em>
+                                   </div>
+
+                                   <div class="col-6 text-right">
+                                        <strong>$ 0.00</strong>
+                                   </div>
+                              </div>
+                         </li>
+
+                         <li class="list-group-item">
+                              <div class="row">
+                                   <div class="col-6">
+                                        <em>Thuế </em>
+                                   </div>
+
+                                   <div class="col-6 text-right">
+                                        <strong>$ <?php
+                                        $tax = $total * 0.01;
+                                        echo $tax ?></strong>
+                                   </div>
+                              </div>
+                         </li>
+
+                         <li class="list-group-item">
+                              <div class="row">
+                                   <div class="col-6">
+                                        <em>Tổng giá của <?php echo count($getAllCart) ?> sản phẩm được thanh toán
+                                             là</em>
+                                   </div>
+
+                                   <div class="col-6 text-right">
+                                        <input type="hidden" name="total"><strong>$ <?php echo $total + $tax ?></strong>
+                                   </div>
+                              </div>
+                         </li>
+                    </ul>
+
+                    <!-- Thông tin người mua -->
+                    <div class="card shadow-sm mb-1 mt-5">
+                         <div class="card-header  text-white">
+                              <h4 class="mb-0">Thông Tin Người Mua</h4>
                          </div>
-                    </li>
-
-                    <li class="list-group-item">
-                         <div class="row">
-                              <div class="col-6">
-                                   <em>Extra</em>
-                              </div>
-
-                              <div class="col-6 text-right">
-                                   <strong>$ 0.00</strong>
-                              </div>
+                         <div class="card-body">
+                              <?php
+                              $id = isset($_SESSION['login_id']) ? $_SESSION["login_id"] : 0;
+                              $getUser = $user->getUserByID($id);
+                              foreach ($getUser as $key => $value): ?>
+                                   <p><strong>Tên người dùng: </strong><?php echo $value["tendangnhap"] ?></p>
+                                   <p><strong>Email: </strong> <?php echo $value["email"] ?></p>
+                                   <p><strong style="margin: bottom: 10px;">Số điện thoại: </strong><input type="text"
+                                             class="form-control mt-2" id="sdt" name="sdt" required>
+                                   <p><strong>Địa chỉ: </strong><input type="text" class="form-control mt-2" id="diachi"
+                                             name="diachi" required></p>
+                              <?php endforeach ?>
                          </div>
-                    </li>
-
-                    <li class="list-group-item">
-                         <div class="row">
-                              <div class="col-6">
-                                   <em>Tax</em>
-                              </div>
-
-                              <div class="col-6 text-right">
-                                   <strong>$ 10.00</strong>
-                              </div>
-                         </div>
-                    </li>
-
-                    <li class="list-group-item">
-                         <div class="row">
-                              <div class="col-6">
-                                   <em>Total</em>
-                              </div>
-
-                              <div class="col-6 text-right">
-                                   <strong>$ 138.00</strong>
-                              </div>
-                         </div>
-                    </li>
-
-                    <li class="list-group-item">
-                         <div class="row">
-                              <div class="col-6">
-                                   <em>Deposit payment required</em>
-                              </div>
-
-                              <div class="col-6 text-right">
-                                   <strong>$ 20.00</strong>
-                              </div>
-                         </div>
-                    </li>
-               </ul>
-
-               <br>
-
-               <div class="inner-content">
-                    <div class="contact-form">
-                         <form action="#">
-                              <div class="row">
-                                   <div class="col-sm-6 col-xs-12">
-                                        <div class="form-group">
-                                             <label class="control-label">Title:</label>
-                                             <select class="form-control" data-msg-required="This field is required.">
-                                                  <option value="">-- Choose --</option>
-                                                  <option value="dr">Dr.</option>
-                                                  <option value="miss">Miss</option>
-                                                  <option value="mr">Mr.</option>
-                                                  <option value="mrs">Mrs.</option>
-                                                  <option value="ms">Ms.</option>
-                                                  <option value="other">Other</option>
-                                                  <option value="prof">Prof.</option>
-                                                  <option value="rev">Rev.</option>
-                                             </select>
-                                        </div>
-                                   </div>
-                                   <div class="col-sm-6 col-xs-12">
-                                        <div class="form-group">
-                                             <label class="control-label">Name:</label>
-                                             <input type="text" class="form-control">
-                                        </div>
-                                   </div>
-                              </div>
-                              <div class="row">
-                                   <div class="col-sm-6 col-xs-12">
-                                        <div class="form-group">
-                                             <label class="control-label">Email:</label>
-                                             <input type="text" class="form-control">
-                                        </div>
-                                   </div>
-                                   <div class="col-sm-6 col-xs-12">
-                                        <div class="form-group">
-                                             <label class="control-label">Phone:</label>
-                                             <input type="text" class="form-control">
-                                        </div>
-                                   </div>
-                              </div>
-                              <div class="row">
-                                   <div class="col-sm-6 col-xs-12">
-                                        <div class="form-group">
-                                             <label class="control-label">Address 1:</label>
-                                             <input type="text" class="form-control">
-                                        </div>
-                                   </div>
-                                   <div class="col-sm-6 col-xs-12">
-                                        <div class="form-group">
-                                             <label class="control-label">Address 2:</label>
-                                             <input type="text" class="form-control">
-                                        </div>
-                                   </div>
-                              </div>
-                              <div class="row">
-                                   <div class="col-sm-6 col-xs-12">
-                                        <div class="form-group">
-                                             <label class="control-label">City:</label>
-                                             <input type="text" class="form-control">
-                                        </div>
-                                   </div>
-                                   <div class="col-sm-6 col-xs-12">
-                                        <div class="form-group">
-                                             <label class="control-label">State:</label>
-                                             <input type="text" class="form-control">
-                                        </div>
-                                   </div>
-                              </div>
-                              <div class="row">
-                                   <div class="col-sm-6 col-xs-12">
-                                        <div class="form-group">
-                                             <label class="control-label">Zip:</label>
-                                             <input type="text" class="form-control">
-                                        </div>
-                                   </div>
-                                   <div class="col-sm-6 col-xs-12">
-                                        <div class="form-group">
-                                             <label class="control-label">Country:</label>
-                                             <select class="form-control">
-                                                  <option value="">-- Choose --</option>
-                                                  <option value="">-- Choose --</option>
-                                                  <option value="">-- Choose --</option>
-                                                  <option value="">-- Choose --</option>
-                                             </select>
-                                        </div>
-                                   </div>
-                              </div>
-
-                              <div class="row">
-                                   <div class="col-sm-6 col-xs-12">
-                                        <div class="form-group">
-                                             <label class="control-label">Payment method</label>
-
-                                             <select class="form-control">
-                                                  <option value="">-- Choose --</option>
-                                                  <option value="bank">Bank account</option>
-                                                  <option value="cash">Cash</option>
-                                                  <option value="paypal">PayPal</option>
-                                             </select>
-                                        </div>
-                                   </div>
-
-                                   <div class="col-sm-6 col-xs-12">
-                                        <div class="form-group">
-                                             <label class="control-label">Captcha</label>
-                                             <input type="text" class="form-control">
-                                        </div>
-                                   </div>
-                              </div>
-
-                              <div class="form-group">
-                                   <label class="control-label">
-                                        <input type="checkbox">
-
-                                        I agree with the <a href="terms.php" target="_blank">Terms &amp; Conditions</a>
-                                   </label>
-                              </div>
-
-                              <div class="clearfix">
-                                   <button type="button" class="filled-button pull-left">Back</button>
-
-                                   <button type="submit" class="filled-button pull-right">Finish</button>
-                              </div>
-                         </form>
+                    </div>
+                    <h2 style="text-align: center ; margin-top: 17px ">Thanh toán</h2>
+                    <div class="payment d-flex justify-content-center mt-3">
+                         <button type="submit" href="payment.php" name="pay" value="cash"
+                              class="bn5 btn btn-primary mx-2">Tiền mặt</button>
+                         <button type="submit" href="payment.php" name="pay" value="transfer"
+                              class="bn5 btn-primary mx-2">Chuyển
+                              khoản</button>
                     </div>
                </div>
-          </div>
-     </div>
+          </form>
 
+     </div>
      <footer>
           <div class="container">
                <div class="row">
@@ -262,6 +203,7 @@
                </div>
           </div>
      </footer>
+
 
      <!-- Modal -->
      <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
@@ -336,7 +278,6 @@
           </div>
      </div>
 
-
      <!-- Bootstrap core JavaScript -->
      <script src="vendor/jquery/jquery.min.js"></script>
      <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
@@ -345,6 +286,7 @@
      <!-- Additional Scripts -->
      <script src="assets/js/custom.js"></script>
      <script src="assets/js/owl.js"></script>
-</body>
 
-</html>
+     </body>
+
+     </html>

@@ -37,7 +37,10 @@
   <!-- ***** Preloader End ***** -->
 
   <!-- Header -->
-  <?php include 'header.php' ?>
+  <?php
+  include "required.php";
+  include 'header.php' ?>
+
 
   <!-- Page Content -->
   <div class="page-heading about-heading header-text"
@@ -60,24 +63,30 @@
       <div class="row">
         <div class="col-md-12">
           <div class="section-heading">
-            <h2>Lorem ipsum dolor sit amet consectetur adipisicing</h2>
+            <h2>Chào mừng bạn đến với shop YoungTeam!</h2>
           </div>
         </div>
         <div class="col-md-6">
           <div class="right-image">
-            <img src="assets/images/about-1-570x350.jpg" alt="">
+            <img src="https://toigingiuvedep.vn/wp-content/uploads/2022/04/anh-uy-tin-nang-niu.jpg" alt="">
           </div>
         </div>
         <div class="col-md-6">
           <div class="left-content">
-            <h4>Lorem ipsum dolor sit amet.</h4>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sed voluptate nihil eum consectetur similique?
-              Consectetur, quod, incidunt, harum nisi dolores delectus reprehenderit voluptatem perferendis dicta
-              dolorem non blanditiis ex fugiat. Lorem ipsum dolor sit amet, consectetur adipisicing elit.<br><br>Lorem
-              ipsum dolor sit amet, consectetur adipisicing elit. Et, consequuntur, modi mollitia corporis ipsa
-              voluptate corrupti eum ratione ex ea praesentium quibusdam? Aut, in eum facere corrupti necessitatibus
-              perspiciatis quis.</p>
-            <ul class="social-icons">
+            <h4>Sứ mệnh của chúng tôi.</h4>
+            <p>Mang đến các sản phẩm công nghệ mới nhất với giá cả hợp lý, cùng với dịch vụ hỗ trợ tận tâm, nhằm giúp
+              khách hàng trải nghiệm công nghệ một cách dễ dàng và tiện lợi nhất. </p>
+            <h4>Chúng tôi cung cấp: </h4>
+            <ul>
+              <li><strong>Sản phẩm chính hãng:</strong> Chúng tôi cam kết cung cấp sản phẩm chính hãng 100%, đầy đủ bảo
+                hành từ các thương hiệu nổi tiếng.</li>
+              <li><strong>Giá cả cạnh tranh: </strong>Mang lại giá trị tốt nhất cho khách hàng với các chương trình
+                khuyến mãi và ưu đãi thường xuyên.</li>
+              <li><strong>Hỗ trợ khách hàng 24/7: </strong> Đội ngũ chăm sóc khách hàng nhiệt tình luôn lắng nghe và
+                giải quyết mọi yêu cầu của bạn.</li>
+            </ul>
+
+            <ul class="social-icons mt-3">
               <li><a href="#"><i class="fa fa-facebook"></i></a></li>
               <li><a href="#"><i class="fa fa-twitter"></i></a></li>
               <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
@@ -89,28 +98,18 @@
     </div>
   </div>
 
-
   <div class="team-members">
     <div class="container">
       <div class="row">
         <div class="col-md-12">
           <div class="section-heading">
-            <h2>Lorem ipsum dolor sit amet.</h2>
+            <h2>Định hướng tương lai.</h2>
           </div>
-
-          <h5>Lorem ipsum dolor sit amet.</h5>
-
-          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sed voluptate nihil eum consectetur similique?
-            Consectetur, quod, incidunt, harum nisi dolores delectus reprehenderit voluptatem perferendis dicta dolorem
-            non blanditiis ex fugiat. Lorem ipsum dolor sit amet, consectetur adipisicing elit.<br><br>Lorem ipsum dolor
-            sit amet, consectetur adipisicing elit. Et, consequuntur, modi mollitia corporis ipsa voluptate corrupti eum
-            ratione ex ea praesentium quibusdam? Aut, in eum facere corrupti necessitatibus perspiciatis quis.</p>
-
-          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nemo quae eveniet tempora reprehenderit quo,
-            necessitatibus vel sit laboriosam, sunt obcaecati quisquam explicabo voluptatibus earum facilis quidem fuga
-            maiores. Quasi, obcaecati? <br><br> Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sequi, est
-            officiis. Ipsam quas consequuntur adipisci quis, fuga pariatur eius eveniet qui similique nulla inventore
-            accusantium, suscipit asperiores quibusdam culpa iure!</p>
+          <p>Với mục tiêu không ngừng đổi mới, <strong style="font-size: 17px;">YoungTeam</strong> mong muốn trở thành
+            người bạn đồng hành đáng
+            tin cậy
+            trong việc nâng cao trải nghiệm công nghệ của bạn. Chúng tôi không chỉ bán sản phẩm mà còn mang đến giá trị
+            và sự hài lòng tối đa.</p>
         </div>
       </div>
     </div>

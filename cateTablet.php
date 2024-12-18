@@ -10,7 +10,8 @@
     <meta name="author" content="">
     <link rel="icon" href="assets/images/favicon.ico">
 
-    <link href="https://fonts.googleapis.com/css?family=Poppins:100,200,300,400,500,600,700,800,900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Poppins:100,200,300,400,500,600,700,800,900&display=swap"
+        rel="stylesheet">
 
     <title>PHPJabbers.com | Free Online Store Website Template</title>
 
@@ -47,17 +48,18 @@
     $perPage = 6;
     $start = ($page - 1) * $perPage;
     $search = $product->search($keyword, $start, $perPage);
-    $total = count($product->TotalCate($keyword));
+    $total = count($product->searchCountByType_Id1(1));
     $url = $_SERVER['PHP_SELF'] . '?keyword=' . $keyword;
     ?>
 
     <!-- Page Content -->
-    <div class="page-heading about-heading header-text" style="background-image: url(assets/images/heading-6-1920x500.jpg);">
+    <div class="page-heading about-heading header-text"
+        style="background-image: url(https://i.ytimg.com/vi/r6dacT7Pddk/maxresdefault.jpg); background-size: cover; background-repeat: no-repeat; background-position: center center; height: 550px;">
         <div class="container">
             <div class="row">
                 <div class="col-md-12">
                     <div class="text-content">
-                        <h2>Products</h2>
+                        <h2>Tablet</h2>
                     </div>
                 </div>
             </div>
@@ -69,9 +71,10 @@
             <div class="row mx-0 justify-content-center">
                 <?php
                 $getAllProtype = $protype->getAllProtype();
-                foreach ($getAllProtype as $key => $value) : ?>
+                foreach ($getAllProtype as $key => $value): ?>
                     <div class="col-auto text-center">
-                        <a href='cate<?php echo $value['type_name'] ?>.php' class='btn btn-outline-warning mx-2 px-3 py-2 shadow'>
+                        <a href='cate<?php echo $value['type_name'] ?>.php'
+                            class='btn btn-outline-warning mx-2 px-3 py-2 shadow'>
                             <?php echo $value['type_name'] ?>
                         </a>
                     </div>
@@ -85,11 +88,13 @@
         <div class="container">
             <div class="row mx-0">
                 <?php
-                $searchByType_Id = $product->searchByType_Id(1);
-                foreach ($searchByType_Id as $key => $value) : ?>
+                $searchByType_Id = $product->searchByType_Id(4, $start, $perPage);
+                foreach ($searchByType_Id as $key => $value): ?>
                     <div class="col-md-4">
                         <div class="product-item shadow">
-                            <a href="product-details.php?id=<?php echo $value['id'] ?>"><img src="anh/<?php echo $value['image']; ?>" alt=""></a>
+                            <a href="product-details.php?id=<?php echo $value['id'] ?>"><img
+                                    src="anh/<?php echo $value['image']; ?>" alt=""
+                                    style="width: 300px; height: 300px; object-fit: cover;  display: block; margin: auto; filter: contrast(110%) brightness(105%); border-radius: 10px"></a>
                             <div class="down-content">
                                 <a href="product-details.php?id=<?php echo $value['id'] ?>">
                                     <h4><?php echo $value['name']; ?></h4>
@@ -115,7 +120,8 @@
             <div class="row">
                 <div class="col-md-12">
                     <div class="inner-content">
-                        <p>Copyright © 2020 Company Name - Template by: <a href="https://www.phpjabbers.com/">PHPJabbers.com</a></p>
+                        <p>Copyright © 2020 Company Name - Template by: <a
+                                href="https://www.phpjabbers.com/">PHPJabbers.com</a></p>
                     </div>
                 </div>
             </div>
@@ -123,7 +129,8 @@
     </footer>
 
     <!-- Modal -->
-    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
         <div class="modal-dialog modal-lg" role="document">
             <div class="modal-content">
                 <div class="modal-header">
@@ -138,13 +145,15 @@
                             <div class="row">
                                 <div class="col-md-6">
                                     <fieldset>
-                                        <input type="text" class="form-control" placeholder="Pick-up location" required="">
+                                        <input type="text" class="form-control" placeholder="Pick-up location"
+                                            required="">
                                     </fieldset>
                                 </div>
 
                                 <div class="col-md-6">
                                     <fieldset>
-                                        <input type="text" class="form-control" placeholder="Return location" required="">
+                                        <input type="text" class="form-control" placeholder="Return location"
+                                            required="">
                                     </fieldset>
                                 </div>
                             </div>
@@ -152,13 +161,15 @@
                             <div class="row">
                                 <div class="col-md-6">
                                     <fieldset>
-                                        <input type="text" class="form-control" placeholder="Pick-up date/time" required="">
+                                        <input type="text" class="form-control" placeholder="Pick-up date/time"
+                                            required="">
                                     </fieldset>
                                 </div>
 
                                 <div class="col-md-6">
                                     <fieldset>
-                                        <input type="text" class="form-control" placeholder="Return date/time" required="">
+                                        <input type="text" class="form-control" placeholder="Return date/time"
+                                            required="">
                                     </fieldset>
                                 </div>
                             </div>
@@ -167,7 +178,8 @@
                             <div class="row">
                                 <div class="col-md-6">
                                     <fieldset>
-                                        <input type="text" class="form-control" placeholder="Enter email address" required="">
+                                        <input type="text" class="form-control" placeholder="Enter email address"
+                                            required="">
                                     </fieldset>
                                 </div>
 

@@ -23,6 +23,36 @@
   <link rel="stylesheet" href="assets/css/owl.css">
 
 </head>
+<style>
+  /* Định dạng cho sao */
+  .star-rating {
+    direction: rtl;
+    display: inline-block;
+    font-size: 2em;
+    color: #ddd;
+  }
+
+  .star-rating input {
+    display: none;
+  }
+
+  .star-rating label {
+    cursor: pointer;
+  }
+
+  .star-rating input:checked~label {
+    color: #FFD700;
+  }
+
+  .star-rating input:checked+label~label {
+    color: #FFD700;
+  }
+
+  .star-rating label:hover,
+  .star-rating label:hover~label {
+    color: #FFD700;
+  }
+</style>
 
 <body>
 
@@ -43,12 +73,12 @@
 
   <!-- Page Content -->
   <div class="page-heading about-heading header-text"
-    style="background-image: url(assets/images/heading-6-1920x500.jpg);">
+    style="background-image: url(https://as1.ftcdn.net/v2/jpg/08/15/12/10/1000_F_815121013_22xvtignar8tdiz6EZkFvuwA4V24KaSj.jpg); height: 500px">
     <div class="container">
       <div class="row">
         <div class="col-md-12">
           <div class="text-content">
-            <h4>Lroem ipsum dolor sit amet</h4>
+            <h4>Sản phẩm chi tiết</h4>
             <h2>Product Details</h2>
           </div>
         </div>
@@ -59,25 +89,47 @@
   <div class="products">
     <div class="container">
       <?php
-      $productID = isset($_GET['id']) ? $_GET['id'] : "";
+      $productID = isset($_GET['id']) ? $_GET['id'] : 0;
       $showFullKey = isset($_GET['show_full']) ? $_GET['show_full'] : null;
       $getProductDetail = $product->getProductDetail($productID);
       foreach ($getProductDetail as $key => $value): ?>
-        <div class="row">
-          <div class="col-md-4 col-xs-12">
-            <div>
-              <img src="anh/<?php echo $value['image'] ?>" alt="" class="img-fluid wc-image">
-            </div>
-            <br>
-          </div>
-
-          <div class="col-md-8 col-xs-12">
-            <form action="#" method="post" class="form">
-              <h2><?php echo ($value['name']); ?></h2>
+        <form action="addProductsUser.php?id=<?php echo $productID ?>" method="GET" class="form">
+          <div class="row">
+            <div class="col-md-4 col-xs-12">
+              <div>
+                <input type="hidden" name="product_id" value="<?php echo $productID ?>">
+              </div>
+              <div>
+                <input type="hidden" name="image" value="<?php echo $value['image']; ?>">
+                <img src="anh/<?php echo $value['image'] ?>" alt="" class="img-fluid wc-image">
+              </div>
               <br>
+            </div>
+
+            <div class="col-md-8 col-xs-12">
+
+              <input type="hidden" name="name" value="<?php echo $value['name']; ?>">
+              <h2 name="name"><?php echo $value['name']; ?></h2>
+
+              <!-- Phần đánh giá sao -->
+              <div class="star-rating">
+                <input type="radio" name="rating" id="star5" value="5">
+                <label for="star5">&#9733;</label>
+                <input type="radio" name="rating" id="star4" value="4">
+                <label for="star4">&#9733;</label>
+                <input type="radio" name="rating" id="star3" value="3">
+                <label for="star3">&#9733;</label>
+                <input type="radio" name="rating" id="star2" value="2">
+                <label for="star2">&#9733;</label>
+                <input type="radio" name="rating" id="star1" value="1">
+                <label for="star1">&#9733;</label>
+              </div>
+              <br>
+              <!-- Kết thúc phần đánh giá sao -->
+
               <p class="lead">
-                <small><del> $999.00</del></small>
-                <strong class="text-primary">$<?php echo ($value['price']); ?>.00</strong>
+                <input type="hidden" name="price" value="<?php echo $value['price']; ?>">
+                <strong class="text-primary" name="price">$<?php echo $value['price']; ?>.00</strong>
               </p>
               <p>
                 <?php if ($showFullKey != (string) $key): ?>
@@ -99,37 +151,30 @@
               </p>
 
               <br>
+
               <div class="row">
-                <div class="col-sm-4">
-                  <label class="control-label">Extra 1</label>
-                  <div class="form-group">
-                    <select class="form-control">
-                      <option value="0">18 gears</option>
-                      <option value="1">21 gears</option>
-                      <option value="2">27 gears</option>
-                    </select>
-                  </div>
-                </div>
                 <div class="col-sm-8">
                   <label class="control-label">Quantity</label>
                   <div class="row">
                     <div class="col-sm-6">
                       <div class="form-group">
-                        <input type="text" class="form-control" placeholder="1">
+                        <input type="text" class="form-control" placeholder="1" name="qty" required>
                       </div>
                     </div>
                     <div class="col-sm-6">
-                      <a href="#" class="btn btn-primary btn-block">Add to Cart</a>
+                      <button type="submit" href="addProductsUser.php" class="btn btn-primary btn-block">Add to
+                        Cart</button>
                     </div>
                   </div>
                 </div>
               </div>
-            </form>
+            </div>
           </div>
-        </div>
+        </form>
       <?php endforeach; ?>
     </div>
   </div>
+
 
   <div class="latest-products">
     <div class="container">
@@ -146,7 +191,8 @@
           <div class="col-md-4">
             <div class="product-item">
               <a href="product-details.php?id=<?php echo $value['id'] ?>"><img src="anh/<?php echo $value['image'] ?>"
-                  alt=""></a>
+                  alt=""
+                  style="width: 300px; height: 350px; object-fit: cover;  display: block; margin: auto; filter: contrast(110%) brightness(105%); border-radius: 10px"></a>
               <div class="down-content">
                 <a href="product-details.php?id=<?php echo $value['id'] ?>">
                   <h4><?php echo $value['name'] ?></h4>

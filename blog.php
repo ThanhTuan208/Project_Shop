@@ -1,274 +1,267 @@
+<?php
+
+include "required.php";
+
+
+$page = isset($_GET['page']) ? $_GET['page'] : 1;
+$limit = 3;
+$offset = ($page - 1) * $limit;
+$searching = isset($_GET['searching']) ? $_GET['searching'] : "";
+
+if ($searching) {
+    $sql = "SELECT * FROM blogs WHERE blog_title LIKE '%$searching%' ORDER BY blog_date ASC LIMIT $offset, $limit";
+    $sql_count = "SELECT COUNT(*) as count FROM blogs WHERE blog_title LIKE '%$searching%'";
+    $result = $conn->query($sql);
+    $result_count = $conn->query($sql_count);
+} else {
+    $sql = "SELECT * FROM blogs ORDER BY blog_date ASC LIMIT $offset, $limit";
+    $sql_count = "SELECT COUNT(*) as count FROM blogs";
+    $result = $conn->query($sql);
+    $result_count = $conn->query($sql_count);
+}
+
+if ($result->num_rows > 0) {
+    $blog = $result->fetch_all(MYSQLI_ASSOC);
+} else {
+    $blog = [];
+}
+
+if ($result->num_rows > 0) {
+    $count = $result_count->fetch_assoc()['count'];
+    $total_page = ceil($count / $limit);
+} else {
+    $total_page = 1;
+}
+
+// echo $total_page . ' ---- page' . $page;
+// echo '<pre>';
+// print_r($blog);
+// echo '</pre>';
+
+
+?>
+
+
 <!DOCTYPE html>
-<html lang="en">
+<html lang="vi">
 
 <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="assets/images/favicon.ico">
+    <link href="https://fonts.googleapis.com/css?family=Poppins:100,200,300,400,500,600,700,800,900&display=swap"
+        rel="stylesheet">
 
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta name="description" content="">
-  <meta name="author" content="">
-  <link rel="icon" href="assets/images/favicon.ico">
+    <title>PHPJabbers.com | Mẫu trang web cửa hàng trực tuyến miễn phí</title>
 
-  <link href="https://fonts.googleapis.com/css?family=Poppins:100,200,300,400,500,600,700,800,900&display=swap"
-    rel="stylesheet">
+    <!-- CSS cốt lõi của Bootstrap -->
+    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
 
-  <title>PHPJabbers.com | Free Online Store Website Template</title>
-
-  <!-- Bootstrap core CSS -->
-  <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-
-  <!-- Additional CSS Files -->
-  <link rel="stylesheet" href="assets/css/fontawesome.css">
-  <link rel="stylesheet" href="assets/css/style.css">
-  <link rel="stylesheet" href="assets/css/owl.css">
-
+    <!-- Các tệp CSS bổ sung -->
+    <link rel="stylesheet" href="assets/css/fontawesome.css">
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/owl.css">
 </head>
 
 <body>
 
-  <!-- ***** Preloader Start ***** -->
-  <div id="preloader">
-    <div class="jumper">
-      <div></div>
-      <div></div>
-      <div></div>
-    </div>
-  </div>
-  <!-- ***** Preloader End ***** -->
-
-  <!-- Header -->
-  <?php include 'header.php' ?>
-
-  <!-- Page Content -->
-  <div class="page-heading about-heading header-text"
-    style="background-image: url(assets/images/heading-6-1920x500.jpg);">
-    <div class="container">
-      <div class="row">
-        <div class="col-md-12">
-          <div class="text-content">
-            <h4>Lorem ipsum dolor sit amet</h4>
-            <h2>Blog</h2>
-          </div>
+    <!-- ***** Bắt đầu trình tải trước ***** -->
+    <div id="preloader">
+        <div class="jumper">
+            <div></div>
+            <div></div>
+            <div></div>
         </div>
-      </div>
     </div>
-  </div>
+    <!-- ***** Kết thúc trình tải trước ***** -->
 
-  <div class="products">
-    <div class="container">
-      <div class="row">
-        <div class="col-md-8">
-          <div class="row">
-            <div class="col-md-6">
-              <div class="service-item">
-                <a href="blog-details.php" class="services-item-image"><img src="assets/images/blog-1-370x270.jpg"
-                    class="img-fluid" alt=""></a>
+    <!-- Tiêu đề -->
+    <?php
+    include 'header.php'; ?>
 
-                <div class="down-content">
-                  <h4><a href="blog-details.php">Lorem ipsum dolor sit amet, consectetur adipisicing elit hic</a></h4>
-
-                  <p style="margin: 0;"> John Doe &nbsp;&nbsp;|&nbsp;&nbsp; 12/06/2020 10:30 &nbsp;&nbsp;|&nbsp;&nbsp;
-                    114</p>
-                </div>
-              </div>
-            </div>
-            <div class="col-md-6">
-              <div class="service-item">
-                <a href="blog-details.php" class="services-item-image"><img src="assets/images/blog-2-370x270.jpg"
-                    class="img-fluid" alt=""></a>
-
-                <div class="down-content">
-                  <h4><a href="blog-details.php">Lorem ipsum dolor sit amet consectetur adipisicing elit</a></h4>
-
-                  <p style="margin: 0;"> John Doe &nbsp;&nbsp;|&nbsp;&nbsp; 12/06/2020 10:30 &nbsp;&nbsp;|&nbsp;&nbsp;
-                    114</p>
-                </div>
-              </div>
-            </div>
-            <div class="col-md-6">
-              <div class="service-item">
-                <a href="blog-details.php" class="services-item-image"><img src="assets/images/blog-3-370x270.jpg"
-                    class="img-fluid" alt=""></a>
-
-                <div class="down-content">
-                  <h4><a href="blog-details.php">Aperiam modi voluptatum fuga officiis cumque</a></h4>
-
-                  <p style="margin: 0;"> John Doe &nbsp;&nbsp;|&nbsp;&nbsp; 12/06/2020 10:30 &nbsp;&nbsp;|&nbsp;&nbsp;
-                    114</p>
-                </div>
-              </div>
-            </div>
-
-            <div class="col-md-6">
-              <div class="service-item">
-                <a href="blog-details.php" class="services-item-image"><img src="assets/images/blog-4-370x270.jpg"
-                    class="img-fluid" alt=""></a>
-
-                <div class="down-content">
-                  <h4><a href="blog-details.php">Lorem ipsum dolor sit amet, consectetur adipisicing elit hic</a></h4>
-
-                  <p style="margin: 0;"> John Doe &nbsp;&nbsp;|&nbsp;&nbsp; 12/06/2020 10:30 &nbsp;&nbsp;|&nbsp;&nbsp;
-                    114</p>
-                </div>
-              </div>
-            </div>
-            <div class="col-md-6">
-              <div class="service-item">
-                <a href="blog-details.php" class="services-item-image"><img src="assets/images/blog-5-370x270.jpg"
-                    class="img-fluid" alt=""></a>
-
-                <div class="down-content">
-                  <h4><a href="blog-details.php">Lorem ipsum dolor sit amet consectetur adipisicing elit</a></h4>
-
-                  <p style="margin: 0;"> John Doe &nbsp;&nbsp;|&nbsp;&nbsp; 12/06/2020 10:30 &nbsp;&nbsp;|&nbsp;&nbsp;
-                    114</p>
-                </div>
-              </div>
-            </div>
-            <div class="col-md-6">
-              <div class="service-item">
-                <a href="blog-details.php" class="services-item-image"><img src="assets/images/blog-6-370x270.jpg"
-                    class="img-fluid" alt=""></a>
-
-                <div class="down-content">
-                  <h4><a href="blog-details.php">Aperiam modi voluptatum fuga officiis cumque</a></h4>
-
-                  <p style="margin: 0;"> John Doe &nbsp;&nbsp;|&nbsp;&nbsp; 12/06/2020 10:30 &nbsp;&nbsp;|&nbsp;&nbsp;
-                    114</p>
-                </div>
-              </div>
-            </div>
-
-            <div class="col-md-12">
-              <ul class="pages">
-                <li><a href="#">1</a></li>
-                <li class="active"><a href="#">2</a></li>
-                <li><a href="#">3</a></li>
-                <li><a href="#">4</a></li>
-                <li><a href="#"><i class="fa fa-angle-double-right"></i></a></li>
-              </ul>
-            </div>
-          </div>
-        </div>
-
-        <div class="col-md-4">
-          <div class="contact-form">
-            <div class="form-group">
-              <h5>Blog Search</h5>
-            </div>
-
+    <!-- Nội dung trang -->
+    <div class="page-heading about-heading header-text"
+        style="background-image: url(assets/images/heading-6-1920x500.jpg);">
+        <div class="container">
             <div class="row">
-              <div class="col-8">
-                <input type="text" class="form-control" placeholder="Search" aria-label="Search"
-                  aria-describedby="basic-addon2">
-              </div>
-
-              <div class="col-4">
-                <button class="filled-button" type="button">Go</button>
-              </div>
+                <div class="col-md-12">
+                    <div class="text-content">
+                        <h4>Lorem ipsum dolor sit amet</h4>
+                        <h2>Blog</h2>
+                    </div>
+                </div>
             </div>
-          </div>
-
-          <div class="form-group">
-            <h5>Lorem ipsum dolor sit amet</h5>
-          </div>
-
-          <p><a href="blog-details.php">Lorem ipsum dolor sit amet, consectetur adipisicing.</a></p>
-          <p><a href="blog-details.php">Et animi voluptatem, assumenda enim, consectetur quaerat!</a></p>
-          <p><a href="blog-details.php">Ducimus magni eveniet sit doloremque molestiae alias mollitia vitae.</a></p>
         </div>
-      </div>
     </div>
-  </div>
 
-  <footer>
-    <div class="container">
-      <div class="row">
-        <div class="col-md-12">
-          <div class="inner-content">
-            <p>Copyright © 2020 Company Name - Template by: <a href="https://www.phpjabbers.com/">PHPJabbers.com</a></p>
-          </div>
+    <div class="products">
+        <div class="container">
+            <div class="row">
+                <div class="col-12 mt-5">
+                    <div class="row">
+                        <div class="col-12 col-md-6">
+                            <h1>Quản lý bài viết</h1>
+                        </div>
+
+                        <div class="col-12 col-md-6">
+                            <form class="d-flex" role="search">
+                                <input class="form-control me-2" type="search" name="searching"
+                                    value="<?= $searching ?>" placeholder="Tìm blog" aria-label="Search">
+                                <button class="btn btn-outline-success" type="submit">Tìm</button>
+                            </form>
+                        </div>
+                    </div>
+
+                    <a href="./add_blog.php" class="btn btn-primary mt-2">Thêm bài viết</a>
+
+                    <div class="mt-5">
+                        <div class="row g-3">
+                            <?php if (count($blog) > 0): ?>
+                                <?php foreach ($blog as $item): ?>
+                                    <div class="col-12 col-md-6 col-lg-4">
+                                        <div class="card">
+                                            <img src="<?= './' . $item['blog_image'] ?>" class="card-img-top "
+                                                style="height: 200px; object-fit: cover" alt="...">
+
+                                            <div class="card-body">
+                                                <div class="d-flex align-items-center mb-4 justify-content-between">
+                                                    <div class="d-flex align-items-center">
+                                                        <div
+                                                            style="width: 30px; height: 30px; margin-right: 10px; border-radius: 50%; border: 1px solid #ccc;">
+                                                            <img src="https://png.pngtree.com/png-vector/20220518/ourmid/pngtree-circular-avatar-vector-illustration-male-people-person-male-vector-png-image_36446834.png"
+                                                                alt="" class="rounded-circle w-100 h-100"
+                                                                style="object-fit: cover;">
+                                                        </div>
+                                                        <div>
+                                                            <h1 class="fw-bold mb-0 text-capitalize" style="font-size: 14px;">
+                                                                <?= $item['author'] ?>
+                                                            </h1>
+
+                                                            <p class="mb-0 text-secondary" style="font-size: 12px;">
+                                                                <?= $item['blog_date'] ?>
+                                                            </p>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="dropdown">
+                                                        <button class="btn btn-secondary dropdown-toggle-action dropdown-toggle"
+                                                            type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown"
+                                                            aria-expanded="false">
+
+                                                        </button>
+
+                                                        <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                                                            <li><a class="dropdown-item"
+                                                                    href="./edit_blog.php?id=<?= $item['id'] ?>">Chỉnh sửa</a>
+                                                            </li>
+                                                            <li><a class="dropdown-item"
+                                                                    onclick="return confirm('Xoa bai viet?')"
+                                                                    href="./delete_blog.php?id=<?= $item['id'] ?>">Xóa bài
+                                                                    viết</a></li>
+
+                                                        </ul>
+                                                    </div>
+                                                </div>
+
+                                                <h5 class="card-title text-truncate"><?= $item['blog_title'] ?></h5>
+
+                                                <a href="./blog_details.php?id=<?= $item['id'] ?>" class="btn btn-primary">Xem
+                                                    chi tiết</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                <?php endforeach; ?>
+                            <?php else: ?>
+                                <div class="col-12 col-md-6 col-lg-4">
+                                    <div class="alert alert-warning" role="alert">
+                                        <?= $searching ? "Kết quả không tìm thấy" : "Chưa có bài viết nào" ?>
+                                    </div>
+                                </div>
+                            <?php endif ?>
+
+                        </div>
+
+                        <nav aria-label="..." class="mt-3">
+                            <ul class="pagination">
+                                <?php if ($page - 1 > 0): ?>
+                                    <li class="page-item">
+                                        <?php if (!empty($searching)): ?>
+                                            <a class="page-link" href="?page=<?= $page - 1 ?>&searching=<?= $searching ?>"
+                                                tabindex="-1">Trước</a>
+                                        <?php else: ?>
+                                            <a class="page-link" href="?page=<?= $page - 1 ?>" tabindex="-1">Trước</a>
+                                        <?php endif ?>
+                                    </li>
+                                <?php else: ?>
+                                    <li class="page-item disabled">
+                                        <a class="page-link" href="#" tabindex="-1">Trước</a>
+                                    </li>
+                                <?php endif ?>
+
+                                <?php for ($i = 1; $i <= $total_page; $i++): ?>
+                                    <?php if ($i == $page): ?>
+                                        <li class="page-item active">
+                                            <a class="page-link" href="#"><?= $i ?></a>
+                                        </li>
+                                    <?php else: ?>
+                                        <?php if (!empty($searching)): ?>
+                                            <li class="page-item"><a class="page-link"
+                                                    href="?page=<?= $i ?>&searching=<?= $searching ?>"><?= $i ?></a></li>
+                                        <?php else: ?>
+                                            <li class="page-item"><a class="page-link" href="?page=<?= $i ?>"><?= $i ?></a></li>
+                                        <?php endif ?>
+                                    <?php endif ?>
+                                <?php endfor ?>
+
+                                <li class="page-item">
+
+                                    <?php if ($page == $total_page): ?>
+                                        <a class="page-link disabled" href="#">Sau</a>
+                                    <?php else: ?>
+                                        <?php if (!empty($searching)): ?>
+                                            <a class="page-link"
+                                                href="?page=<?= $page + 1 ?>&searching=<?= $searching ?>">Sau</a>
+                                        <?php else: ?>
+                                            <a class="page-link" href="?page=<?= $page + 1 ?>">Sau</a>
+                                        <?php endif ?>
+                                    <?php endif ?>
+
+                                </li>
+                            </ul>
+                        </nav>
+                    </div>
+                </div>
+            </div>
         </div>
-      </div>
     </div>
-  </footer>
 
-  <!-- Modal -->
-  <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-    aria-hidden="true">
-    <div class="modal-dialog modal-lg" role="document">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel">Book Now</h5>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="inner-content">
+                        <p>Bản quyền © Tên công ty năm 2020 - Mẫu của: <a
+                                href="https://www.phpjabbers.com/">PHPJabbers.com</a></p>
+                    </div>
+                </div>
+            </div>
         </div>
-        <div class="modal-body">
-          <div class="contact-form">
-            <form action="#" id="contact">
-              <div class="row">
-                <div class="col-md-6">
-                  <fieldset>
-                    <input type="text" class="form-control" placeholder="Pick-up location" required="">
-                  </fieldset>
-                </div>
+    </footer>
 
-                <div class="col-md-6">
-                  <fieldset>
-                    <input type="text" class="form-control" placeholder="Return location" required="">
-                  </fieldset>
-                </div>
-              </div>
+    <!-- JavaScript cốt lõi của Bootstrap -->
+    <script src="vendor/jquery/jquery.min.js"></script>
+    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+        crossorigin="anonymous"></script>
+    <script src="assets/js/custom.js"></script>
+    <script src="assets/js/owl.js"></script>
 
-              <div class="row">
-                <div class="col-md-6">
-                  <fieldset>
-                    <input type="text" class="form-control" placeholder="Pick-up date/time" required="">
-                  </fieldset>
-                </div>
-
-                <div class="col-md-6">
-                  <fieldset>
-                    <input type="text" class="form-control" placeholder="Return date/time" required="">
-                  </fieldset>
-                </div>
-              </div>
-              <input type="text" class="form-control" placeholder="Enter full name" required="">
-
-              <div class="row">
-                <div class="col-md-6">
-                  <fieldset>
-                    <input type="text" class="form-control" placeholder="Enter email address" required="">
-                  </fieldset>
-                </div>
-
-                <div class="col-md-6">
-                  <fieldset>
-                    <input type="text" class="form-control" placeholder="Enter phone" required="">
-                  </fieldset>
-                </div>
-              </div>
-            </form>
-          </div>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-          <button type="button" class="btn btn-primary">Book Now</button>
-        </div>
-      </div>
-    </div>
-  </div>
-
-
-  <!-- Bootstrap core JavaScript -->
-  <script src="vendor/jquery/jquery.min.js"></script>
-  <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-
-
-  <!-- Additional Scripts -->
-  <script src="assets/js/custom.js"></script>
-  <script src="assets/js/owl.js"></script>
 </body>
 
 </html>

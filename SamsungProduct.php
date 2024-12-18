@@ -42,24 +42,25 @@
     include 'required.php';
     include 'header.php';
 
-    $keyword = 'SamSung';
+    $manu_id = isset($_GET['manu_id']) ? $_GET['manu_id'] : 0;
 
     $page = isset($_GET['page']) ? $_GET['page'] : 1;
     $perPage = 3;
     $start = ($page - 1) * $perPage;
-    $total = count($product->TotalCate($keyword));
-    $url = $_SERVER['PHP_SELF'] . '?keyword=' . $keyword;
+    $total = count($product->TotalCateByManuId($manu_id));
+    $url = $_SERVER['PHP_SELF'] . '?manu_id=' . $manu_id;
     ?>
 
     <!-- Page Content -->
+    <?php $manu_id = isset($_GET['manu_id']) ? $_GET['manu_id'] : 0;
+    $getImageByIdManu = $manufactures->getImageByIdManu($manu_id); ?>
+
     <div class="page-heading about-heading header-text"
-        style="background-image: url(assets/images/heading-6-1920x500.jpg);">
+        style="background-image: url(anh/<?php echo $getImageByIdManu ?>);background-size: cover; background-repeat: no-repeat; background-position: center center; height: 500px; ">
         <div class="container">
             <div class="row">
                 <div class="col-md-12">
                     <div class="text-content">
-                        <h4>Lorem ipsum dolor sit amet</h4>
-                        <h2>Products</h2>
                     </div>
                 </div>
             </div>
@@ -70,12 +71,13 @@
         <div class="container">
             <div class="row mx-0">
                 <?php
-                $getAllAppleProduct = $product->getAllAppleProduct($keyword, $start, $perPage);
-                foreach ($getAllAppleProduct as $key => $value): ?>
+                $getAllManuNameProduct = $product->getAllManuNameProduct($manu_id, $start, $perPage);
+                foreach ($getAllManuNameProduct as $key => $value): ?>
                     <div class="col-md-4">
                         <div class="product-item shadow">
                             <a href="product-details.php?id=<?php echo $value['id'] ?>"><img
-                                    src="anh/<?php echo $value['image']; ?>" alt=""></a>
+                                    src="anh/<?php echo $value['image']; ?>" alt=""
+                                    style="width: 300px; height: 300px; object-fit: cover;  display: block; margin: auto; filter: contrast(110%) brightness(105%); border-radius: 10px"></a>
                             <div class="down-content">
                                 <a href="product-details.php">
                                     <h4><?php echo $value['name']; ?></h4>
@@ -94,6 +96,7 @@
             </div>
         </div>
     </div>
+
 
 
     <footer>
