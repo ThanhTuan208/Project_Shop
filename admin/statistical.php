@@ -45,6 +45,7 @@
                                             <th style="width: 50vh;">Tên sản phẩm</th>
                                             <th style="width: 20vh;">Giá</th>
                                             <th style="width: 20vh;">Số lần mua</th>
+                                            <th style="width: 20vh;">Số lượng</th>
                                             <th style="width: 30vh;">Doanh thu</th>
                                         </tr>
                                     </thead>
@@ -67,15 +68,18 @@
                                                 </td>
 
                                                 <td>
-                                                    <?php echo $value["qty"] ?>
+                                                    <?php echo $value["quantity"] ?>
                                                 </td>
                                                 <td>
-                                                    $ <?php echo $value["total"] ?>
+                                                    <?php echo $value["total_qty"] ?>
+                                                </td>
+                                                <td>
+                                                    $ <?php echo $value["total_price"] ?>
                                                 </td>
                                             </tr>
                                         <?php endforeach; ?>
                                         <tr class="table-primary">
-                                            <td colspan="5" class="text-end"><strong>Tổng Cộng:</strong></td>
+                                            <td colspan="6" class="text-end"><strong>Tổng Cộng:</strong></td>
                                             <td><strong><?php echo $payment->sumAllPay() ?>
                                                     USD</strong></td>
                                         </tr>

@@ -23,15 +23,17 @@ class Payment extends Database
 
     public function getDataToStatisticalByPay($start, $count)
     {
-        $sql = self::$con->prepare("SELECT product_id, payment.qty as qty, products.name as namePro, products.price as price, image, COUNT(*) AS quantity, SUM(payment.price) AS total   
+        $sql = self::$con->prepare("SELECT 
+        product_id, 
+        products.name AS namePro, 
+        products.price AS price, image, SUM(payment.qty) AS total_qty, COUNT(*) AS quantity, SUM(payment.price) AS total_price
         FROM payment
         JOIN products ON products.id = payment.product_id
-        GROUP BY product_id, namePro, image, qty LIMIT ?, ?");
+        GROUP BY product_id, namePro, price, image LIMIT ?, ? ");
         $sql->bind_param('ii', $start, $count);
         $sql->execute();
         $item = array();
         $item = $sql->get_result()->fetch_all(MYSQLI_ASSOC);
-
         return $item;
     }
 
