@@ -36,14 +36,14 @@
                         <div class="dropdown-menu">
                             <a class="dropdown-item d-flex align-items-center" href="Cart.php">
                                 <i class="fa fa-shopping-cart mr-2"></i>
-                                <span>Cart</span>
+                                <span>Your cart</span>
                                 <?php $totalCart = $cart->getAllCart(); ?>
                                 <span
                                     class="badge badge-pill badge-warning ml-auto"><?php echo count($totalCart); ?></span>
                             </a>
                             <a class="dropdown-item d-flex align-items-center" href="yourCart.php">
                                 <i class="fa fa-list-alt mr-2"></i>
-                                <span>Your Cart</span>
+                                <span>Shopping history</span>
                             </a>
                         </div>
                     </li>
