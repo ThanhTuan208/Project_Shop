@@ -28,7 +28,7 @@ if ($pay == "cash") {
                 $payment_status = "fail";
             } else
                 $payment_status = "success";
-            $payment->AddPay($user_id, $product_id, $price, $payment_method, $payment_status, $qty);
+            $payment->AddPay($user_id, $product_id, $price + ($price * 0.01), $payment_method, $payment_status, $qty);
             $cart->DeleteAllCart($product_id);
         }
         $user->UpdateUser($user_id, $phone, $address);

@@ -1,3 +1,4 @@
+<link rel="stylesheet" href="style.css">
 <?php include "headerCRUD.php"; ?>
 
 <!DOCTYPE html>
@@ -52,7 +53,7 @@
                     <div class="mb-3">
                         <label for="productName" class="form-label">Tên Sản Phẩm</label>
                         <input type="text" class="form-control" id="productName" name="productName" value=""
-                            placeholder="Nhập tên sản phẩm" required>
+                            minlength="3" maxlength="50" placeholder="Nhập tên sản phẩm" required>
                     </div>
 
                     <!-- Nhà Sản Xuất -->
@@ -84,21 +85,22 @@
                     <!-- Giá -->
                     <div class="mb-3">
                         <label for="price" class="form-label">Giá</label>
-                        <input type="number" class="form-control" id="price" name="price"
+                        <input type="number" class="form-control" id="price" name="price" min="10"
                             placeholder="Nhập giá sản phẩm" required>
                     </div>
 
                     <!-- Hình ảnh -->
                     <div class="mb-3">
                         <label for="productImage" class="form-label">Tải Hình Ảnh</label>
-                        <input type="file" class="form-control" id="productImage" name="productImage" required>
+                        <input type="file" class="form-control" id="productImage" name="productImage" minlength="3"
+                            maxlength="50" required>
                     </div>
 
                     <!-- Mô Tả -->
                     <div class="mb-3">
                         <label for="description" class="form-label">Mô Tả</label>
-                        <textarea class="form-control" id="description" name="description" rows="3"
-                            placeholder="Nhập mô tả sản phẩm" required></textarea>
+                        <textarea class="form-control" id="description" name="description" rows="3" minlength="3"
+                            maxlength="5000" placeholder="Nhập mô tả sản phẩm" required></textarea>
                     </div>
 
                     <!-- Nổi Bật -->

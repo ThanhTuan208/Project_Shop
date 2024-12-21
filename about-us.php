@@ -44,7 +44,7 @@
 
   <!-- Page Content -->
   <div class="page-heading about-heading header-text"
-    style="background-image: url(assets/images/heading-1-1920x500.jpg);">
+    style="background-image: url(https://duongviet.com.vn/wp-content/uploads/2020/02/60872bf7816979372078-768x511.jpg); background-size: cover; background-repeat: no-repeat; background-position: center center; height: 600px;">
     <div class="container">
       <div class="row">
         <div class="col-md-12">
@@ -63,7 +63,7 @@
       <div class="row">
         <div class="col-md-12">
           <div class="section-heading">
-            <h2>Chào mừng bạn đến với shop YoungTeam!</h2>
+            <h2>Chào mừng bạn đến với YoungTeam!</h2>
           </div>
         </div>
         <div class="col-md-6">

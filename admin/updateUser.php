@@ -1,3 +1,4 @@
+<link rel="stylesheet" href="style.css">
 <?php include "headerCRUD.php"; ?>
 
 <!DOCTYPE html>
@@ -46,14 +47,14 @@
             <div class="container mt-5">
                 <h1 class="mt-5 mb-4 d-flex align-items-center justify-content-center">Thêm Sản Phẩm</h1>
 
-                <?php $user_id = isset($_GET["id"]) ? $_GET["id"] : 0;
+                <?php $user_id = isset($_GET["user_id"]) ? $_GET["user_id"] : 0;
                 $getUserById = $user->getUserById($user_id);
                 foreach ($getUserById as $key => $value): ?>
                     <form action="update.php?id=<?php echo $value["id"] ?>" method="post" enctype="multipart/form-data">
 
                         <div class="mb-3">
                             <label for="pass" class="form-label">Mật khẩu</label>
-                            <input type="text" class="form-control" id="pass" name="pass"
+                            <input type="text" class="form-control" id="pass" name="pass" minlength="3" maxlength="50"
                                 value="<?php echo $value["matkhau"] ?>" placeholder="Nhập mật khẩu">
                         </div>
                         <!-- Nút Gửi -->

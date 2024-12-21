@@ -15,7 +15,7 @@
 </head>
 <?php
 $loi = "";
-if (isset($_POST['nutguiyeucau']) == true) {
+if (isset($_POST['nutguiyeucau'])) {
   $email = $_POST['email'];
   $conn = new PDO("mysql:host=localhost;dbname=sales;charset=utf8", "root", "");
   $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
@@ -33,7 +33,7 @@ if (isset($_POST['nutguiyeucau']) == true) {
     $stmt->execute([$matkhaumoi, $email]);
     // echo "da cap nhat ";
     $kq = GuiGmail($email, $matkhaumoi);
-    if ($kq == true) {
+    if ($kq) {
       echo "Tin nhắn email đã được gửi đến cho bạn ";
     } else {
 

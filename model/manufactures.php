@@ -3,7 +3,17 @@ class Manufactures extends Database
 {
     public function getAllManu()
     {
-        $sql = self::$con->prepare('SELECT * FROM manufactures');
+        $sql = self::$con->prepare('SELECT * FROM manufactures ORDER BY manu_id desc');
+        $sql->execute();
+        $item = array();
+        $item = $sql->get_result()->fetch_all(MYSQLI_ASSOC);
+        return $item;
+    }
+
+    public function getAllManuStartCount($start, $count)
+    {
+        $sql = self::$con->prepare('SELECT * FROM manufactures ORDER BY manu_id desc LIMIT ?, ?');
+        $sql->bind_param('ii', $start, $count);
         $sql->execute();
         $item = array();
         $item = $sql->get_result()->fetch_all(MYSQLI_ASSOC);

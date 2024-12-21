@@ -28,13 +28,6 @@
 <body>
 
   <!-- ***** Preloader Start ***** -->
-  <div id="preloader">
-    <div class="jumper">
-      <div></div>
-      <div></div>
-      <div></div>
-    </div>
-  </div>
   <!-- ***** Preloader End ***** -->
 
   <!-- Header -->
@@ -116,18 +109,6 @@
   </div>
 
 
-  <footer>
-    <div class="container">
-      <div class="row">
-        <div class="col-md-12">
-          <div class="inner-content">
-            <p>Copyright © 2020 Company Name - Template by: <a href="https://www.phpjabbers.com/">PHPJabbers.com</a></p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </footer>
-
   <!-- Modal -->
   <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
     aria-hidden="true">
@@ -205,5 +186,6 @@
   <script src="assets/js/custom.js"></script>
   <script src="assets/js/owl.js"></script>
 </body>
+<?php include "footer.php"; ?>
 
 </html>

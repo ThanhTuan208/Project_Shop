@@ -1,3 +1,4 @@
+<link rel="stylesheet" href="style.css">
 <?php include "headerCRUD.php"; ?>
 
 <style>
@@ -12,6 +13,11 @@
     <?php
     include "sidebar.php";
     include "../required.php";
+    $perPage = 5;
+    $page = isset($_GET['page']) ? $_GET['page'] : 1;
+    $start = ($page - 1) * $perPage;
+    $total = count($payment->getAllPayment());
+    $url = $_SERVER['PHP_SELF'] . '?keyword=' . 'statistical';
     ?>
 
     <!-- BEGIN CONTENT -->
@@ -37,6 +43,7 @@
                                             <th style="width: 40vh;">Id sản phẩm</th>
                                             <th style="width: 40vh;">Hình sản phẩm</th>
                                             <th style="width: 50vh;">Tên sản phẩm</th>
+                                            <th style="width: 20vh;">Giá</th>
                                             <th style="width: 20vh;">Số lần mua</th>
                                             <th style="width: 30vh;">Doanh thu</th>
                                         </tr>
@@ -44,10 +51,8 @@
                                     <tbody>
                                         <?php
                                         $totalAll = 0;
-                                        $getDataToStatisticalByPay = $payment->getDataToStatisticalByPay();
-                                        foreach ($getDataToStatisticalByPay as $key => $value):
-                                            $totalAll += $value['total'];
-                                            ?>
+                                        $getDataToStatisticalByPay = $payment->getDataToStatisticalByPay($start, $perPage);
+                                        foreach ($getDataToStatisticalByPay as $key => $value): ?>
                                             <tr class="text-center">
                                                 <td><?php echo $value['product_id']; ?></td>
                                                 <td>
@@ -58,20 +63,29 @@
                                                     <?php echo $value["namePro"] ?>
                                                 </td>
                                                 <td>
-                                                    <?php echo $value["quantity"] ?>
+                                                    $ <?php echo $value["price"] ?>.00
+                                                </td>
+
+                                                <td>
+                                                    <?php echo $value["qty"] ?>
                                                 </td>
                                                 <td>
-                                                    <?php echo $value["total"] ?>
+                                                    $ <?php echo $value["total"] ?>
                                                 </td>
                                             </tr>
                                         <?php endforeach; ?>
                                         <tr class="table-primary">
-                                            <td colspan="4" class="text-end"><strong>Tổng Cộng:</strong></td>
-                                            <td><strong><?php echo $totalAll ?>.00
+                                            <td colspan="5" class="text-end"><strong>Tổng Cộng:</strong></td>
+                                            <td><strong><?php echo $payment->sumAllPay() ?>
                                                     USD</strong></td>
                                         </tr>
                                     </tbody>
                                 </table>
+                                <div class="d-flex justify-content-center mt-4">
+                                    <ul class="pagination">
+                                        <?php echo $product->pageInt($url, $total, $perPage, $page); ?>
+                                    </ul>
+                                </div>
                             </div>
                             <!-- End Table Responsive -->
                         </div>

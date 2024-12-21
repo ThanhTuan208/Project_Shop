@@ -76,7 +76,7 @@
                         <div class="product-item shadow">
                             <a href="product-details.php?id=<?php echo $value['id'] ?>"><img
                                     src="anh/<?php echo $value['image']; ?>" alt=""
-                                    style="width: 300px; height: 300px; object-fit: cover;  display: block; margin: auto; filter: contrast(110%) brightness(105%); border-radius: 10px"></a>
+                                    style="width: 200px; height: 200px; object-fit: cover;  display: block; margin: auto; filter: contrast(110%) brightness(105%); border-radius: 10px"></a>
                             <div class="down-content">
                                 <a href="product-details.php?id=<?php echo $value['id'] ?>">
                                     <h4><?php echo $value['name']; ?></h4>
@@ -193,5 +193,6 @@
     <script src="assets/js/custom.js"></script>
     <script src="assets/js/owl.js"></script>
 </body>
+<?php include "footer.php"; ?>
 
 </html>

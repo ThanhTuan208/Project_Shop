@@ -1,3 +1,4 @@
+<link rel="stylesheet" href="style.css">
 <?php include "headerCRUD.php"; ?>
 
 <!DOCTYPE html>
@@ -54,22 +55,23 @@
                         <!-- Tên -->
                         <div class="mb-3">
                             <label for="typeManu" class="form-label">Tên danh mục</label>
-                            <input type="text" class="form-control" id="typeManu" name="typeManu"
-                                value="<?php echo $value["manu_name"] ?>" placeholder="Nhập tên danh mục">
+                            <input type="text" class="form-control" id="typeManu" name="typeManu" minlength="3"
+                                maxlength="50" value="<?php echo $value["manu_name"] ?>" placeholder="Nhập tên danh mục">
                         </div>
 
                         <!-- Hình ảnh -->
                         <div class="mb-3">
                             <label for="imageManu" class="form-label">Tải Hình Ảnh</label>
-                            <input type="file" class="form-control" id="imageManu" name="imageManu">
+                            <input type="file" class="form-control" id="imageManu" name="imageManu" minlength="3"
+                                maxlength="50">
                             <img src="../anh/<?php echo $value["img"] ?>" alt=" Hình ảnh đã chọn trước đó"
                                 style="max-width: 250px; max-height: 30vh; margin-top; 10vh;">
                         </div>
 
                         <div class="mb-3">
                             <label for="nameManu" class="form-label">Tên tác giả</label>
-                            <input type="text" class="form-control" id="nameManu" name="nameManu"
-                                value="<?php echo $value["authors"] ?>" placeholder="Nhập tên tác giả">
+                            <input type="text" class="form-control" id="nameManu" name="nameManu" minlength="3"
+                                maxlength="50" value="<?php echo $value["authors"] ?>" placeholder="Nhập tên tác giả">
                         </div>
                         <!-- Nút Gửi -->
 

@@ -1,3 +1,4 @@
+<link rel="stylesheet" href="style.css">
 <?php include "headerCRUD.php"; ?>
 
 <!DOCTYPE html>
@@ -47,15 +48,16 @@
             <div class="container mt-5">
                 <h1 class="mt-5 mb-4 d-flex align-items-center justify-content-center">Thêm Sản Phẩm</h1>
                 <?php
-                $id = isset($_GET['id']) ? $_GET["id"] : "";
+                $id = isset($_GET['item_id']) ? $_GET["item_id"] : "";
                 $getProductDetail = $product->getProductDetail($id);
                 foreach ($getProductDetail as $key => $value): ?>
                     <form action="update.php?id=<?php echo $id ?>" method="post" enctype="multipart/form-data">
                         <!-- Tên Sản Phẩm -->
                         <div class="mb-3">
                             <label for="productName" class="form-label">Tên sản phẩm</label>
-                            <input type="text" class="form-control" id="productName" name="productName"
-                                value="<?php echo $value["name"] ?>" placeholder="Nhập tên sản phẩm" required>
+                            <input type="text" class="form-control" id="productName" name="productName" minlength="3"
+                                maxlength="50" value="<?php echo $value["name"] ?>" placeholder="Nhập tên sản phẩm"
+                                required>
                         </div>
 
                         <!-- Nhà Sản Xuất -->
@@ -93,7 +95,7 @@
                         <!-- Giá -->
                         <div class="mb-3">
                             <label for="price" class="form-label">Giá</label>
-                            <input type="number" class="form-control" id="price" name="price"
+                            <input type="number" class="form-control" id="price" name="price" min="10"
                                 value="<?php echo $value["price"] ?>" placeholder="Nhập giá sản phẩm" required>
                         </div>
 
@@ -108,7 +110,7 @@
                         <!-- Mô Tả -->
                         <div class="mb-3">
                             <label for="description" class="form-label">Mô Tả</label>
-                            <textarea class="form-control" id="description" name="description" rows="3"
+                            <textarea class="form-control" id="description" name="description" rows="3" minlength="100"
                                 placeholder="Nhập mô tả sản phẩm" required><?php echo $value["description"] ?></textarea>
                         </div>
 
@@ -139,11 +141,10 @@
 
                         <!-- Nút Gửi -->
                         <div class="text-center">
-                            <form action="update.php?id=<?php echo $value["id"] ?>" method="post">
-                                <button type="submit" class="btn btn-primary" name="update" value="product">Cập Nhật
-                                    Sản
-                                    Phẩm</button>
-                            </form>
+                            <button type="submit" class="btn btn-primary" name="update" value="product">Cập Nhật
+                                Sản
+                                Phẩm</button>
+
                         </div>
                     </form>
                 <?php endforeach ?>

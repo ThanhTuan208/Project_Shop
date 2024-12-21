@@ -17,10 +17,7 @@
 <link rel="stylesheet" href="assets/css/style.css">
 <link rel="stylesheet" href="AUI/cssButton.css">
 <link rel="stylesheet" href="assets/css/owl.css">
-
-
 </head>
-
 <style>
      .card {
           border-radius: 20px;
@@ -99,7 +96,7 @@
                                    <div class="col-6 text-right">
                                         <?php $arr = [];
                                         foreach ($cart->getAllCart() as $key => $value) {
-                                             $arr[] = $value["name"];
+                                             $arr[] = $value["name"] . " x " . $value["qty"];
                                         }
                                         echo implode(", ", $arr);
                                         ?></strong>
@@ -173,9 +170,10 @@
                                    <p><strong>Tên người dùng: </strong><?php echo $value["tendangnhap"] ?></p>
                                    <p><strong>Email: </strong> <?php echo $value["email"] ?></p>
                                    <p><strong style="margin: bottom: 10px;">Số điện thoại: </strong><input type="text"
-                                             class="form-control mt-2" id="sdt" name="sdt" required>
+                                             class="form-control mt-2" id="sdt" name="sdt" minlength="3" maxlength="100"
+                                             required>
                                    <p><strong>Địa chỉ: </strong><input type="text" class="form-control mt-2" id="diachi"
-                                             name="diachi" required></p>
+                                             minlength="3" maxlength="100" name="diachi" required></p>
                               <?php endforeach ?>
                          </div>
                     </div>

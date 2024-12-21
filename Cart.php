@@ -11,6 +11,7 @@ include "required.php"
   <title>Giỏ Hàng và Thông Tin Người Mua</title>
   <!-- Bootstrap CSS -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="AUI/cssButton.css">
 </head>
 <style>
   body {
@@ -144,11 +145,12 @@ include "required.php"
     </div>
 
     <!-- Nút hành động -->
+
     <div class="text-center">
-      <a href="index.php" class="btn btn-outline-primary btn-lg me-3">Tiếp Tục Mua Sắm</a>
+      <a href="index.php" class="bn5 btn btn-outline-success btn-lg me-3">Tiếp tục mua sắm</a>
       <form method="post" action="checkout.php" class="d-inline">
         <input type="hidden" name="product_id" value="<?php echo $id; ?>">
-        <button type="submit" href="checkout.php" class="btn btn-outline-success btn-lg me-3">Tiến Hành
+        <button type="submit" href="checkout.php" class="bn5 btn btn-outline-success btn-lg me-3">Tiến Hành
           Thanh
           Toán</button>
       </form>
@@ -158,6 +160,7 @@ include "required.php"
   <!-- Bootstrap JS -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
 </body>
+
 
 
 </html>

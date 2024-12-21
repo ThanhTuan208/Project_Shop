@@ -64,9 +64,6 @@
     </div>
   </div>
   <!-- Banner Ends Here -->
-
-
-
   <div class="latest-products">
     <div class="container">
       <div class="row">
@@ -76,24 +73,21 @@
             <a href="featuredProduct.php">view more <i class="fa fa-angle-right"></i></a>
           </div>
         </div>
-        <?php $getTopItem = $product->getFeatureItem(1, 3, 3);
+        <?php $getTopItem = $product->getFeatureItem(1, 0, 6);
         foreach ($getTopItem as $key => $value): ?>
           <div class="col-md-4">
             <div class="product-item">
-              <a href="product-details.php?id=<?php echo $value['productID'] ?>">
-                <img src="anh/<?php echo $value['image']; ?>" alt=""
-                  style="width: 200px; height: 200px; object-fit: cover; display: block; margin: auto; filter: contrast(110%) brightness(105%); border-radius: 10px;">
+              <a style="width: 50px, height: 10px;" href="product-details.php?id=<?php echo $value['id'] ?>">
+                <img src="anh/<?php echo $value['image'] ?>" class="img-fluid" alt=""
+                  style="width: 200px; height: 200px; object-fit: cover;   display: block; margin: auto; filter: contrast(110%) brightness(105%); border-radius: 10px">
               </a>
               <div class="down-content">
                 <a href="product-details.php?id=<?php echo $value['id'] ?>">
                   <h4><?php echo $value['name'] ?></h4>
                 </a>
-                <h6><small><del>$999.00</del></small> $<?php echo $value['price'] ?></h6>
+                <h6><small><del>$999.00</del></small> $<?php echo $value['price'] ?>.00</h6>
                 <p><?php echo substr($value['description'], 0, 100) ?> ...</p>
-                <div class="buy" style="display: flex; justify-content: space-between; align-items: center;">
-                  <p>Số lượt bán: <?php echo $value["quantity"] ?> </p>
-                  <p> <?php echo $value["nameType"] ?></p>
-                </div>
+
               </div>
             </div>
           </div>
@@ -137,7 +131,6 @@
       </div>
     </div>
   </div>
-
 
 
   <div class="services"
@@ -230,18 +223,8 @@
     </div>
   </div>
 
-  <footer>
-    <div class="container">
-      <div class="row">
-        <div class="col-md-12">
-          <div class="inner-content">
-            <p>Copyright &copy; 2020 Company Name - Template by: <a
-                href="https://www.phpjabbers.com/">PHPJabbers.com</a></p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </footer>
+
+
 
   <!-- Bootstrap core JavaScript -->
   <script src="vendor/jquery/jquery.min.js"></script>
@@ -254,5 +237,6 @@
   <script src="assets/js/owl.carousel.min.js"></script>
 
 </body>
+<?php include "footer.php"; ?>
 
 </html>

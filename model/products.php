@@ -22,12 +22,8 @@ class Products extends Database
 
     public function getFeatureItem($feature, $start, $count)
     {
-        $sql = self::$con->prepare('SELECT *, products.id as productID, protypes.type_name as nameType, payment.product_id as ProductPayID, COUNT(payment.product_id) AS quantity FROM products 
-        JOIN payment ON payment.product_id = products.id
-        JOIN protypes ON products.type_id = protypes.type_id
-        WHERE feature = ?
-        GROUP BY ProductPayID, nameType,  productID
-        LIMIT ?,?');
+        $sql = self::$con->prepare('SELECT *FROM products 
+        WHERE feature = ? ORDER BY id desc LIMIT ?, ?');
         $sql->bind_param('iii', $feature, $start, $count);
         $sql->execute();
         $item = array();
@@ -101,7 +97,7 @@ class Products extends Database
     {
         $sql = self::$con->prepare('SELECT *
         FROM products
-        WHERE `feature` LIKE ? LIMIT ?, ?');
+        WHERE `feature` LIKE ? ORDER BY id desc LIMIT ?, ? ');
         $sql->bind_param('iii', $feature, $start, $count);
         $sql->execute();
         $item = array();

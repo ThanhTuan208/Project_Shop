@@ -1,3 +1,4 @@
+<link rel="stylesheet" href="style.css">
 <?php include "headerCRUD.php"; ?>
 
 <div class="d-flex">
@@ -5,6 +6,11 @@
     <?php
     include "sidebar.php";
     include "../required.php";
+    $perPage = 5;
+    $page = isset($_GET['page']) ? $_GET['page'] : 1;
+    $start = ($page - 1) * $perPage;
+    $total = count($manufactures->getAllManu());
+    $url = $_SERVER['PHP_SELF'] . '?keyword=' . "manu";
     ?>
 
     <!-- BEGIN CONTENT -->
@@ -39,7 +45,7 @@
                                     <tbody>
                                         <?php
                                         // Lấy tất cả dữ liệu nhà sản xuất
-                                        $getAllManu = $manufactures->getAllManu();
+                                        $getAllManu = $manufactures->getAllManuStartCount($start, $perPage);
                                         foreach ($getAllManu as $key => $value):
                                             ?>
                                             <tr class="text-center">
@@ -50,16 +56,21 @@
                                                 <td><?php echo $value['manu_name']; ?></td>
                                                 <td><?php echo $value['authors']; ?></td>
                                                 <td>
-                                                    <?php $image = $value["manu_id"] ?>
                                                     <a href="updateManu.php?manu_id=<?php echo $value['manu_id']; ?>"
                                                         class="btn btn-success btn-sm">Sửa</a>
-                                                    <a href="delete.php?manu_id=<?php echo $value['manu_id']; ?>"
+
+                                                    <a href="delete.php?manu_id=<?php echo $value['manu_id']; ?>&del=manu"
                                                         class="btn btn-danger btn-sm">Xóa</a>
                                                 </td>
                                             </tr>
                                         <?php endforeach; ?>
                                     </tbody>
                                 </table>
+                                <div class="d-flex justify-content-center mt-4">
+                                    <ul class="pagination">
+                                        <?php echo $product->pageInt($url, $total, $perPage, $page); ?>
+                                    </ul>
+                                </div>
                             </div>
                             <!-- End Table Responsive -->
                         </div>

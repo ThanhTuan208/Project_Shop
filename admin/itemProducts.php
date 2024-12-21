@@ -1,3 +1,4 @@
+<link rel="stylesheet" href="style.css">
 <?php include "headerCRUD.php"; ?>
 <div class="d-flex">
     <!-- Sidebar -->
@@ -59,10 +60,11 @@
                                             <td><?php echo $value['feature'] ? "Có" : "Không"; ?></td>
                                             <td><?php echo $dateFormat; ?></td>
                                             <td>
-                                                <a href="updateProducts.php?id=<?php echo $value['id']; ?>"
+                                                <a href="updateProducts.php?item_id=<?php echo $value['id']; ?>"
                                                     class="btn btn-success btn-sm">Sửa</a>
-                                                <a href="delete.php?id=<?php echo $value['id']; ?>"
+                                                <a href="delete.php?item_id=<?php echo $value['id']; ?>&del=item"
                                                     class="btn btn-danger btn-sm">Xóa</a>
+
                                             </td>
                                         </tr>
                                     <?php endforeach; ?>

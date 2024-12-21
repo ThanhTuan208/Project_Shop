@@ -212,5 +212,6 @@
     <script src="assets/js/custom.js"></script>
     <script src="assets/js/owl.js"></script>
 </body>
+<?php include "footer.php"; ?>
 
 </html>

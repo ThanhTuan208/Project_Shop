@@ -1,20 +1,21 @@
 <?php
 include "../required.php";
 
-$id = isset($_GET['id']) ? $_GET['id'] : 0;
-if (isset($id)) {
-    $product->delete($_GET['id']);
+$del = isset($_GET["del"]) ? $_GET["del"] : "";
+
+if ($del == "item") {
+    $item_id = isset($_GET['item_id']) ? $_GET['item_id'] : 0;
+    $product->delete($item_id);
     header('location:itemProducts.php');
-}
 
-$manu_id = isset($_GET['manu_id']) ? $_GET['manu_id'] : 0;
-if (isset($manu_id)) {
-    $product->DeleteManu($_GET['manu_id']);
+} else if ($del == "manu") {
+    $manu_id = isset($_GET['manu_id']) ? $_GET['manu_id'] : 0;
+    $product->DeleteManu($manu_id);
     header('location:manuProducts.php');
-}
 
-$user_id = isset($_GET['id']) ? $_GET['id'] : 0;
-if (isset($id)) {
-    $user->delete($_GET['id']);
+} else if ($del == "user") {
+    $user_id = isset($_GET['user_id']) ? $_GET['user_id'] : 0;
+    $user->deleteUser($user_id);
     header('location:userProducts.php');
 }
+

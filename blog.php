@@ -1,7 +1,6 @@
 <?php
-
 include "required.php";
-
+include 'header.php';
 
 $page = isset($_GET['page']) ? $_GET['page'] : 1;
 $limit = 3;
@@ -80,18 +79,17 @@ if ($result->num_rows > 0) {
     <!-- ***** Kết thúc trình tải trước ***** -->
 
     <!-- Tiêu đề -->
-    <?php
-    include 'header.php'; ?>
+
 
     <!-- Nội dung trang -->
     <div class="page-heading about-heading header-text"
-        style="background-image: url(assets/images/heading-6-1920x500.jpg);">
+        style="background-image: url(https://thumbs.dreamstime.com/b/blog-information-website-concept-workplace-background-text-view-above-127465079.jpg); background-size: cover; background-repeat: no-repeat; background-position: center center; height: 550px;">
         <div class="container">
             <div class="row">
                 <div class="col-md-12">
                     <div class="text-content">
-                        <h4>Lorem ipsum dolor sit amet</h4>
-                        <h2>Blog</h2>
+                        <h4>Tin tức</h4>
+                        <h2>News</h2>
                     </div>
                 </div>
             </div>
@@ -116,15 +114,13 @@ if ($result->num_rows > 0) {
                         </div>
                     </div>
 
-                    <a href="./add_blog.php" class="btn btn-primary mt-2">Thêm bài viết</a>
-
                     <div class="mt-5">
                         <div class="row g-3">
                             <?php if (count($blog) > 0): ?>
                                 <?php foreach ($blog as $item): ?>
                                     <div class="col-12 col-md-6 col-lg-4">
                                         <div class="card">
-                                            <img src="<?= './' . $item['blog_image'] ?>" class="card-img-top "
+                                            <img src="<?= './admin/' . $item['blog_image'] ?>" class="card-img-top "
                                                 style="height: 200px; object-fit: cover" alt="...">
 
                                             <div class="card-body">
@@ -147,24 +143,7 @@ if ($result->num_rows > 0) {
                                                         </div>
                                                     </div>
 
-                                                    <div class="dropdown">
-                                                        <button class="btn btn-secondary dropdown-toggle-action dropdown-toggle"
-                                                            type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown"
-                                                            aria-expanded="false">
 
-                                                        </button>
-
-                                                        <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                                                            <li><a class="dropdown-item"
-                                                                    href="./edit_blog.php?id=<?= $item['id'] ?>">Chỉnh sửa</a>
-                                                            </li>
-                                                            <li><a class="dropdown-item"
-                                                                    onclick="return confirm('Xoa bai viet?')"
-                                                                    href="./delete_blog.php?id=<?= $item['id'] ?>">Xóa bài
-                                                                    viết</a></li>
-
-                                                        </ul>
-                                                    </div>
                                                 </div>
 
                                                 <h5 class="card-title text-truncate"><?= $item['blog_title'] ?></h5>
@@ -240,19 +219,6 @@ if ($result->num_rows > 0) {
     </div>
 
     <!-- Footer -->
-    <footer>
-        <div class="container">
-            <div class="row">
-                <div class="col-md-12">
-                    <div class="inner-content">
-                        <p>Bản quyền © Tên công ty năm 2020 - Mẫu của: <a
-                                href="https://www.phpjabbers.com/">PHPJabbers.com</a></p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </footer>
-
     <!-- JavaScript cốt lõi của Bootstrap -->
     <script src="vendor/jquery/jquery.min.js"></script>
     <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
@@ -263,5 +229,7 @@ if ($result->num_rows > 0) {
     <script src="assets/js/owl.js"></script>
 
 </body>
+
+<?php include "footer.php" ?>
 
 </html>

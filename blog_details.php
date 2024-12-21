@@ -1,3 +1,11 @@
+<style>
+    .blog {
+
+        justify-content: center;
+        align-items: center;
+
+    }
+</style>
 <?php
 
 include_once "required.php";
@@ -45,7 +53,7 @@ if (!$blog) {
             <div class="col-8 mt-5">
                 <a href="./blog.php" class="btn btn-primary my-2">Quay về</a>
 
-                <h1><?= $blog['blog_title'] ?></h1>
+                <h1 style="text-align: center;"><?= $blog['blog_title'] ?></h1>
 
                 <div class="d-flex align-items-center my-5">
                     <div
@@ -60,7 +68,7 @@ if (!$blog) {
                     </div>
                 </div>
 
-                <div>
+                <div class="blog text-center">
                     <?= $blog['blog_content'] ?>
                 </div>
             </div>

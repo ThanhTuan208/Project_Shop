@@ -1,3 +1,4 @@
+<link rel="stylesheet" href="style.css">
 <?php include "headerCRUD.php"; ?>
 
 <!DOCTYPE html>
@@ -49,8 +50,8 @@
 
                     <div class="mb-3">
                         <label for="typeManu" class="form-label">Tên danh mục</label>
-                        <input type="text" class="form-control" id="typeManu" name="typeManu" value=""
-                            placeholder="Nhập tên danh mục" required>
+                        <input type="text" class="form-control" id="typeManu" name="typeManu" value="" minlength="3"
+                            maxlength="50" placeholder="Nhập tên danh mục" required>
                     </div>
 
 
@@ -61,8 +62,8 @@
 
                     <div class="mb-3">
                         <label for="nameManu" class="form-label">Tên tác giả</label>
-                        <input type="text" class="form-control" id="nameManu" name="nameManu" value=""
-                            placeholder="Nhập tên tác giả" required>
+                        <input type="text" class="form-control" id="nameManu" name="nameManu" value="" minlength="3"
+                            maxlength="50" placeholder="Nhập tên tác giả" required>
                     </div>
 
                     <form action="add.php" method="post">

@@ -17,7 +17,7 @@
         }
 
         .nav-link:hover {
-            background-color: #343a40;
+            background - color: #343a40;
             /* Đổi màu nền khi hover */
             color: #ffc107;
             /* Đổi màu chữ khi hover */
@@ -26,12 +26,12 @@
         }
 
         .nav-item {
-            margin-bottom: 15px;
+            margin - bottom: 15px;
             /* Khoảng cách giữa các mục */
         }
 
         .text-center {
-            font-weight: bold;
+            font - weight: bold;
             /* Chữ in đậm cho tiêu đề */
         }
     </style>
@@ -40,26 +40,26 @@
         <h4 class="text-center mb-5">Bảng điều khiển</h4>
         <ul class="nav flex-column">
             <li class="nav-item">
-                <a href="../index.php" class="nav-link">
+                <a href="../index.php" class="nav-link mb-4">
                     <i class="bi bi-house-door"></i> Trang chủ
                 </a>
             </li>
             <li class="nav-item">
-                <a href="itemProducts.php" class="nav-link">
+                <a href="itemProducts.php" class="nav-link mb-4">
                     <i class="bi bi-list"></i> Mục sản phẩm
                 </a>
             </li>
             <li class="nav-item">
-                <a href="manuProducts.php" class="nav-link">
+                <a href="manuProducts.php" class="nav-link mb-4">
                     <i class="bi bi-tags"></i> Danh mục
                 </a>
             </li>
             <li class="nav-item">
-                <a href="userProducts.php" class="nav-link">
+                <a href="userProducts.php" class="nav-link mb-4">
                     <i class="bi bi-people"></i> Người dùng
                 </a>
             </li>
-            <li class="nav-item dropdown">
+            <li class="nav-item dropdown mb-4">
                 <a href="#" class="nav-link dropdown-toggle" id="addProductsDropdown" role="button"
                     data-bs-toggle="dropdown" aria-expanded="false">
                     <i class="bi bi-plus-circle"></i> Thêm sản phẩm
@@ -69,8 +69,17 @@
                     <li><a class="dropdown-item" href="addManu.php">Thêm danh mục</a></li>
                 </ul>
             </li>
-
-            <li class="nav-item">
+            <li class="nav-item dropdown mb-4">
+                <a href="#" class="nav-link dropdown-toggle" id="addProductsDropdown" role="button"
+                    data-bs-toggle="dropdown" aria-expanded="false">
+                    <i class="bi bi-plus-circle"></i> Thêm bài viết blogs
+                </a>
+                <ul class="dropdown-menu" aria-labelledby="addProductsDropdown">
+                    <li><a class="dropdown-item" href="add_blog.php">Thêm bài viết</a></li>
+                    <li><a class="dropdown-item" href="blog.php">xóa sưa</a></li>
+                </ul>
+            </li>
+            <li class="nav-item mb-4">
                 <a href="statistical.php" class="nav-link">
                     <i class="bi bi-clipboard2-data"></i> Thống kê
                 </a>
