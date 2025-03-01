@@ -1,9 +1,9 @@
 CREATE TABLE payments (
-    id INT AUTO_INCREMENT PRIMARY KEY,  -- Mã giao dịch thanh toán
-    user_id INT NOT NULL,               -- ID người dùng
-    order_id INT,                       -- Mã đơn hàng (nếu có)
-    amount DECIMAL(10, 2) NOT NULL,     -- Số tiền đã thanh toán
-    payment_method VARCHAR(50),         -- Phương thức thanh toán (ví dụ: PayPal, thẻ tín dụng)
-    payment_status ENUM('success', 'failed', 'pending') DEFAULT 'pending', -- Trạng thái
-    payment_date DATETIME DEFAULT CURRENT_TIMESTAMP, -- Thời gian thanh toán                      
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    user_id INT NOT NULL,              
+    order_id INT,                      
+    amount DECIMAL(10, 2) NOT NULL,    
+    payment_method VARCHAR(50),        
+    payment_status ENUM('success', 'failed') DEFAULT 'success',
+    payment_date DATETIME DEFAULT CURRENT_TIMESTAMP,                   
 );

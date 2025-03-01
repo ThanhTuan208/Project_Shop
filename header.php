@@ -58,9 +58,8 @@
                         </form>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="AUI/dangnhap.php">
-                            <i class="bi bi-door-closed-fill fs-1"></i>
-                            Logout
+                        <a class="nav-link" href="AUI/dangnhap.php" <?php session_destroy(); ?>>
+                            <i class="bi bi-door-closed-fill fs-1"></i> Logout
                         </a>
                     </li>
                 </ul>

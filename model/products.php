@@ -194,17 +194,6 @@ class Products extends Database
         return $item;
     }
 
-    public function getAllAppleProduct($keyword, $start, $count)
-    {
-        $sql = self::$con->prepare('SELECT * FROM products
-        WHERE `description` LIKE ? LIMIT ?, ?');
-        $keyword = "%$keyword%";
-        $sql->bind_param('sii', $keyword, $start, $count);
-        $sql->execute();
-        $item = array();
-        $item = $sql->get_result()->fetch_all(MYSQLI_ASSOC);
-        return $item;
-    }
 
     public function getAllManuNameProduct($id, $start, $count)
     {

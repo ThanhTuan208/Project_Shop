@@ -79,7 +79,7 @@
             <div class="product-item">
               <a style="width: 50px, height: 10px;" href="product-details.php?id=<?php echo $value['id'] ?>">
                 <img src="anh/<?php echo $value['image'] ?>" class="img-fluid" alt=""
-                  style="width: 200px; height: 200px; object-fit: cover;   display: block; margin: auto; filter: contrast(110%) brightness(105%); border-radius: 10px">
+                  style="width: 200px; height: 200px; object-fit: cover;  display: block; margin: auto; filter: contrast(110%) brightness(105%); border-radius: 10px">
               </a>
               <div class="down-content">
                 <a href="product-details.php?id=<?php echo $value['id'] ?>">
@@ -87,7 +87,6 @@
                 </a>
                 <h6><small><del>$999.00</del></small> $<?php echo $value['price'] ?>.00</h6>
                 <p><?php echo substr($value['description'], 0, 100) ?> ...</p>
-
               </div>
             </div>
           </div>
@@ -113,7 +112,7 @@
                   <a style="width: 50px, height: 10px;" href="product-details.php?id=<?php echo $value['product_id'] ?>"
                     class="services-item-image">
                     <img src="anh/<?php echo $value['image'] ?>" class="img-fluid" alt=""
-                      style="width: 200px; height: 200px; object-fit: cover;   display: block; margin: auto; filter: contrast(110%) brightness(105%); border-radius: 10px">
+                      style="width: 200px; height: 200px; object-fit: cover; display: block; margin: auto; filter: contrast(110%) brightness(105%); border-radius: 10px">
                   </a>
                   <div class="down-content">
                     <h4><?php echo $value['namePro'] ?></h4>

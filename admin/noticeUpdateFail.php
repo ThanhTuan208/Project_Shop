@@ -22,7 +22,13 @@
 
         <!-- Thông tin thêm hoặc liên kết -->
         <div class="text-center">
-            <a href="itemProducts.php" class="btn btn-primary">Trở về trang chủ</a>
+            <?php if ($update == "product") {
+                echo '<a href="itemProducts.php" class="btn btn-primary">Trở về mục sản phẩm</a>';
+            } else if ($update == "manu")
+                echo '<a href="manuProducts.php" class="btn btn-primary">Trở về danh mục</a>';
+            else
+                echo '<a href="userProducts.php" class="btn btn-primary">Trở về người dùng</a>';
+            ?>
         </div>
     </div>
 
