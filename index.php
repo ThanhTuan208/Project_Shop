@@ -67,27 +67,28 @@
   <div class="latest-products">
     <div class="container">
       <div class="row">
-        <div class="col-md-12">
-          <div class="section-heading">
+        <div class="col-12">
+          <div class="section-heading d-flex justify-content-between align-items-center">
             <h2>Featured Products</h2>
-            <a href="featuredProduct.php">view more <i class="fa fa-angle-right"></i></a>
+            <a href="featuredProduct.php" class="btn btn-sm btn-outline-primary">view more <i
+                class="fa fa-angle-right"></i></a>
           </div>
         </div>
+
         <?php $getTopItem = $product->getFeatureItem(1, 0, 6);
         foreach ($getTopItem as $key => $value): ?>
-          <div class="col-md-4">
-            <div class="product-item">
-              <a style="width: 50px, height: 10px;" href="product-details.php?id=<?php echo $value['id'] ?>">
-                <img src="anh/<?php echo $value['image'] ?>" class="img-fluid" alt=""
-                  style="width: 200px; height: 200px; object-fit: cover;   display: block; margin: auto; filter: contrast(110%) brightness(105%); border-radius: 10px">
+          <div class="col-12 col-sm-6 col-lg-4 mb-4">
+            <div class="product-item border rounded shadow-sm p-3 h-100">
+              <a href="product-details.php?id=<?php echo $value['id'] ?>">
+                <img src="anh/<?php echo $value['image'] ?>" class="img-fluid" alt="<?php echo $value['name'] ?>"
+                  style="width: 100%; height: 200px; object-fit: cover; display: block; border-radius: 10px;">
               </a>
-              <div class="down-content">
+              <div class="down-content mt-3">
                 <a href="product-details.php?id=<?php echo $value['id'] ?>">
-                  <h4><?php echo $value['name'] ?></h4>
+                  <h5 class="text-truncate"><?php echo $value['name'] ?></h5>
                 </a>
                 <h6><small><del>$999.00</del></small> $<?php echo $value['price'] ?>.00</h6>
-                <p><?php echo substr($value['description'], 0, 100) ?> ...</p>
-
+                <p class="small"><?php echo substr($value['description'], 0, 100) ?>...</p>
               </div>
             </div>
           </div>
@@ -95,6 +96,7 @@
       </div>
     </div>
   </div>
+
 
   <div class="best-seller">
     <div class="container">

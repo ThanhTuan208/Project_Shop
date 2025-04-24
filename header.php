@@ -1,10 +1,11 @@
+<?php session_start(); ?>
 <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
 <link href="vendor/bootstrap/bootstrap.min.css" rel="stylesheet">
 <header class="">
     <nav class="navbar navbar-expand-lg">
         <div class="container">
             <a class="navbar-brand" href="index.php">
-                <?php session_start(); ?>
+
                 <h5 style="text-align: center;">Hello <br>
                     <em><?php echo isset($_SESSION['login_user']) ? $_SESSION["login_user"] : "friend" ?></em>
                 </h5>
@@ -45,7 +46,7 @@
                                 <i class="fa fa-list-alt mr-2"></i>
                                 <span>Shopping history</span>
                             </a>
-                        </div>
+                        </div>z`
                     </li>
 
                     <li class="nav-item">
